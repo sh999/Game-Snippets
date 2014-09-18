@@ -3,7 +3,7 @@
 */
 Shooter p1;
 void setup(){
-  size(500,500);
+  size(800,800);
   background(0);
   noStroke();
   p1 = new Shooter(width/2,height/2);
@@ -17,10 +17,23 @@ void draw(){
 void keyPressed(){
   if(key == CODED){
     if(keyCode == UP){
-      p1.moveForward();
+      p1.moveForward(); //updates speed
     }
     if(keyCode == LEFT){
-      p1.angle -= 0.4;
+      p1.dAngle = -p1.rotSpeed;
+    }
+    else if(keyCode == RIGHT){
+      p1.dAngle = p1.rotSpeed ;
+    }
+  }
+}
+
+void keyReleased(){
+  p1.dAngle = 0;
+
+  if(key == CODED){
+    if(keyCode == UP){
+      p1.direction = p1.angle;
     }
   }
 }

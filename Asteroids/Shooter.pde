@@ -2,7 +2,9 @@ class Shooter{
   float x, y;
   float dx, dy;
   float speed, maxSpeed;
-  float angle;
+  float angle, direction;
+  float dAngle;
+  float rotSpeed;
   
   Shooter(float x, float y){
     this.x = x;
@@ -12,18 +14,24 @@ class Shooter{
     speed = 0;
     maxSpeed = 4;
     angle = PI/2;
+    dAngle = 0;
+    rotSpeed = 0.3;
   }
   
   void update(){
-    x = x + speed;;
+    dy = speed * cos(direction+PI);
+    dx = speed * -sin(direction+PI);
+    
+    x = x + dx;
     y = y + dy;
-
+    angle = angle + dAngle;
     translate(x, y);
-        rotate(angle);
-    triangle(0,10,7,30,-7,30);
+    
+    rotate(angle);
+    triangle(0,-10,7,20,-7,20);
   } 
   
-  void moveForward(){
+  void moveForward(){ //Thrust
     if(speed == 0){
       speed = 1;
     }
