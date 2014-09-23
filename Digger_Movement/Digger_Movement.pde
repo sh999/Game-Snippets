@@ -3,9 +3,7 @@ Inspired by http://en.wikipedia.org/wiki/Digger_(video_game)
 
 
 Tasks:  Create player that moves in constrained manner
-Improve graphics
-Random map
-Player movement (have to be constrained)
+Fix nonresponsive keyboard movement
 */
 String[] map;
 String a;
@@ -30,8 +28,8 @@ void setup(){
 
 void draw(){
   
-  drawMap();
-  player.draw(); 
+//  drawMap();
+  player.adraw(); 
 
 }
 
@@ -46,6 +44,29 @@ void drawMap(){
       }
     }
   }
+}
+
+void keyPressed(){
+  if(key == CODED){
+    
+    if(keyCode == DOWN){
+      player.dy = player.speed;
+    }
+    else if(keyCode == UP){
+      player.dy = -player.speed;
+    }
+    else if(keyCode == LEFT){
+      player.dx = -player.speed;
+    }
+    else if(keyCode == RIGHT){
+      player.dx = player.speed;
+    }
+  }
+}
+
+void keyReleased(){
+  player.dx = 0;
+  player.dy = 0;
 }
 
 
