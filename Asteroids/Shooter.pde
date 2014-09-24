@@ -24,6 +24,20 @@ class Shooter{
     
     x = x + dx;
     y = y + dy;
+    if(x > width){
+      x = width - x;
+    }
+    else if(x < 0){
+      x = width + x;
+    }
+    if(y > height){
+      y = y - height;
+    }
+    else if(y < 0){
+      y = height - y;
+    }
+    
+    
     angle = angle + dAngle;
     translate(x, y);
     
@@ -31,7 +45,7 @@ class Shooter{
     triangle(0,-10,7,20,-7,20);
   } 
   
-  void moveForward(){ //Thrust
+  void thrust(){ //Thrust
     if(speed == 0){
       speed = 1;
     }

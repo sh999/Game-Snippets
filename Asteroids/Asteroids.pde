@@ -1,5 +1,9 @@
 /*Asteroids clone
 
+Tasks:
+Allow ship to turn while thrust is on
+Bugs:
+initial thrust causes ship to turn sideways
 */
 Shooter p1;
 void setup(){
@@ -17,7 +21,7 @@ void draw(){
 void keyPressed(){
   if(key == CODED){
     if(keyCode == UP){
-      p1.moveForward(); //updates speed
+      p1.thrust(); //updates speed
     }
     if(keyCode == LEFT){
       p1.dAngle = -p1.rotSpeed;

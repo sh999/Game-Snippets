@@ -13,7 +13,6 @@ class Player{
   void adraw(){
     fill(255, 255, 0);
     
-    rect(width/2, y, 30, 30);
     
     y = y + dy;
     x = x + dx;
