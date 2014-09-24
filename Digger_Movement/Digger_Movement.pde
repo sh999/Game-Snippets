@@ -1,10 +1,7 @@
 /* 
 Inspired by http://en.wikipedia.org/wiki/Digger_(video_game)
-
-
 Tasks:  
 Create player that moves in constrained manner
-Fix nonresponsive keyboard movement (when going from one axis to the next)
 */
 String[] map;
 String a;
@@ -29,7 +26,7 @@ void setup(){
 
 void draw(){
   background(0);
-//  drawMap();
+  drawMap();
   player.adraw(); 
   
 
@@ -51,30 +48,34 @@ void drawMap(){
 void keyPressed(){
   if(key == CODED){
     if(keyCode == DOWN){
-      player.dy = player.speed;
+      player.downVel = player.speed;
     }
     else if(keyCode == UP){
-      player.dy = -player.speed;
+      player.upVel = player.speed;
     }
     else if(keyCode == LEFT){
-      player.dx = -player.speed;
+      player.leftVel = player.speed;
     }
     else if(keyCode == RIGHT){
-      player.dx = player.speed;
+      player.rightVel = player.speed;
     }
   }
 }
 
 void keyReleased(){
 if(key == CODED){
-    if(keyCode == DOWN || keyCode == UP){
-      player.dy = 0;
+    if(keyCode == DOWN){
+     
+      player.downVel = 0;
+    }
+    else if(keyCode == UP){
+      player.upVel = 0;
     }
     else if(keyCode == LEFT){
-      player.dx = player.dx + player.speed; 
+      player.leftVel = 0; 
     }
     else if(keyCode == RIGHT){
-      player.dx = player.dx - player.speed; 
+      player.rightVel = 0; 
     }
     
   }
