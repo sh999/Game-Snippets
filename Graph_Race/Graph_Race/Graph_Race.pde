@@ -23,16 +23,17 @@ Network network;
 Connection_table c_table;
 PFont font;
 void setup(){
-  int node_num = 10;
+  int node_num = 4;
 
   size(400, 400);
   background(0);
   ellipseMode(CENTER);
+  textAlign(CENTER, CENTER);
   font = loadFont("MyriadPro-Regular-30.vlw");
   
   textFont(font, 20);
-  network = new Network(node_num); 
   c_table = new Connection_table(node_num); //Creates a table of pair of integers from 0-node_num);
+  network = new Network(node_num); 
 
 }
 
