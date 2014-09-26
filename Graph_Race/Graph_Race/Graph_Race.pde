@@ -14,19 +14,25 @@ Tasks:
   Make network map
     Make nodes (done)
     Make edges
-      Test by making edge from one specific node to another
+      Test by making edge from one specific node to another (Done)
+      Make table of edge pairs to create non redundant edges
 
 
 */
 Network network;
+Connection_table c_table;
 PFont font;
 void setup(){
+  int node_num = 10;
+
   size(400, 400);
   background(0);
   ellipseMode(CENTER);
-  network = new Network(10); // Argument = # of nodes/circles in network
   font = loadFont("MyriadPro-Regular-30.vlw");
+  
   textFont(font, 20);
+  network = new Network(node_num); 
+  c_table = new Connection_table(node_num); //Creates a table of pair of integers from 0-node_num);
 
 }
 

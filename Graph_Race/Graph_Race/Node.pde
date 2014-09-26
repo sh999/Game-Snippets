@@ -15,14 +15,14 @@ class Node{
     moveNode();
     
     fill(255);
-    
+    stroke(193,197,214);
     ellipse(x, y, radius, radius);
     fill(255, 0, 0);
     text(id, x, y);
   
   }
   void moveNode(){
-//    x = x + random(-speed,speed);
-//    y = y + random(-speed,speed);
+    x = x + random(-speed,speed);
+    y = y + random(-speed,speed);
   }
 }
