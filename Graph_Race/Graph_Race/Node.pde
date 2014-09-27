@@ -25,7 +25,7 @@ class Node{
     y = y + random(-speed,speed);
   }
   void colorNode(){
-    if(dist(x, y, mouseX, mouseY) <= radius){
+    if(dist(x, y, mouseX, mouseY) <= radius){ // Color node when mouse is over it
       node_stroke = color(255,255,0);
     }
     else {

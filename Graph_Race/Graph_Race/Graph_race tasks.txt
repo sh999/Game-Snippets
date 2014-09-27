@@ -6,3 +6,4 @@ Make network map
   		Test by making edge from one specific node to another (Done)
   		Make table of edge pairs to create non redundant edges (Done)
 Change color of mouse overed node and neighbors
+Animate network
