@@ -28,7 +28,7 @@ void setup(){
   c_table = new Connection_table(node_num); //Creates a table of pair of integers from 0-node_num);
   network = new Network(node_num); 
   gameplay = new Gameplay();
-  animator = new Network_Animator(); 
+//  animator = new Network_Animator(); 
 }
 
 void draw(){
@@ -39,6 +39,7 @@ void draw(){
 
 void mousePressed(){
   setup();
+  gameplay.mouseEvent();
 }
 
 

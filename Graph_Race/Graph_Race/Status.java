@@ -1,0 +1,3 @@
+enum Status {
+  START, PLAYING
+};
