@@ -41,21 +41,14 @@ class Network{
     Node a = (Node)nodes.get(id);
     return a;
   }  
-  void setFirstNode(int i, String s){ //Colors first node set by gameplay
-    color c = color(0);
-    if(s == "highlight"){ // Mouse cursor over
-      c = color(250,250,70);
-    }
-    else if (s == "no highlight"){ // Mouse leaves
-      c = ((Node)nodes.get(i)).def_node_fill;
-    }
-    else if (s == "pressed"){
-      c = color(0,250,0);
-    }
-    ((Node)nodes.get(i)).node_fill = c;
-  }
   void colorNode(int id, color c){
-  
+    Node n = (Node)nodes.get(id);
+    n.node_fill = c;
   }
-  
+  void clearColors(){
+    for(int i = 0; i < nodes.size(); i++){
+      Node n = (Node)nodes.get(i);
+      n.node_fill = n.def_node_fill;
+    }
+  }  
 }
