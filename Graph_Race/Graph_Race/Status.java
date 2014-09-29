@@ -1,3 +1,3 @@
 enum Status {
-  START, PLAYING
+  START, FIRSTNODESET
 };

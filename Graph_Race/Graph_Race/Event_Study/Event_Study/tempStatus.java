@@ -1,0 +1,1 @@
+enum tempStatus{PRESSED,START};
