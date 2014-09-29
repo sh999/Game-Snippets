@@ -34,6 +34,7 @@ class Network{
     for(int i = 0; i < edges.size(); i++){
       Edge e = (Edge)edges.get(i);
       e.draw();
+      
     }
   }
   Node getNode(int id){

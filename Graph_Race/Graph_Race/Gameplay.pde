@@ -1,9 +1,9 @@
 class Gameplay{ // Mediates user click interaction and directs animation of network
   Status status;
   int targetNodeID;
+  boolean alreadySelectedOne;
   Gameplay(){
     status = Status.START;
-    
   }
   void draw(){
     network.draw();
@@ -16,17 +16,14 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
           network.setFirstNode(targetNodeID, "no highlight");
         }
         break;
-     
     }
 //    animator.moveDown(network);
   }
   void mouseEvent(){
-//    print("hey");  
     if(mouseOverNode() == true && status == Status.START){
       network.setFirstNode(targetNodeID, "pressed");
       status = Status.FIRSTNODESET;
     }
-  
   }
   boolean mouseOverNode(){
     float cursorX = mouseX;
@@ -35,6 +32,7 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
       Node n = network.getNode(i); 
       if(dist(cursorX,cursorY,n.x,n.y) <= n.radius){
         targetNodeID = n.id;
+        print("highlight");
         return true;
       }
     } 

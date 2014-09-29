@@ -17,7 +17,7 @@ Network_Animator animator;
 
 PFont font;
 void setup(){
-  int node_num = 3;
+  int node_num = 20;
   size(800, 800);
   background(0);
   ellipseMode(CENTER);
@@ -42,6 +42,12 @@ void mousePressed(){
   gameplay.mouseEvent();
 }
 
+void keyPressed(){
+  if(key == 'r'){
+    setup();
+  }
+}
+      
 
 
 
