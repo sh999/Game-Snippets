@@ -53,6 +53,9 @@ class Network{
       c = color(0,250,0);
     }
     ((Node)nodes.get(i)).node_fill = c;
-    
   }
+  void colorNode(int id, color c){
+  
+  }
+  
 }

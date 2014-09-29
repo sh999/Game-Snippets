@@ -17,7 +17,7 @@ Network_Animator animator;
 
 PFont font;
 void setup(){
-  int node_num = 20;
+  int node_num = 6;
   size(800, 800);
   background(0);
   ellipseMode(CENTER);
