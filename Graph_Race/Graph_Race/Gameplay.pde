@@ -14,6 +14,7 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     possibleMovesColor = color(250,150,150);
     nextMovesColor = color(255,255,0);
   }
+  
   void draw(){
     network.draw();
     switch (status){ // Depending on program status, determines behavior
@@ -26,32 +27,41 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     }
   }
   
+  void colorNode(int nodeID, color c){
+    network.colorNode(nodeID, c);
+  }
+  
+  void colorNeighbors(int nodeID, color c){
+    neighborNodeIDs = c_table.getNeighbors(nodeID);
+    for(int i : neighborNodeIDs){
+      network.colorNode(i, c);
+    }
+  }
+  
+  void clearColors(){
+    network.clearColors();
+  }
+  
   void nothingSelectedMode(){ // When no node has been clicked
     if(mouseOverNode() == true){  // Mouseover behavior
-      network.colorNode(mouseoverNodeID, highlightColor);
-      neighborNodeIDs = c_table.getNeighbors(mouseoverNodeID);
-      for(int i : neighborNodeIDs){
-        network.colorNode(i, possibleMovesColor);
-      }
+      colorNode(mouseoverNodeID, highlightColor);
+      colorNeighbors(mouseoverNodeID, possibleMovesColor);  
     }
     else if(mouseOverNode() == false){ 
-      network.clearColors(); 
+      clearColors();
     }
   }
   
   void nodeSelectedMode(){
     if(mouseOverNode() == true){  // Mouseover behavior
-      network.colorNode(mouseoverNodeID, highlightColor);
+      colorNode(mouseoverNodeID, highlightColor);
+      colorNeighbors(mouseoverNodeID, possibleMovesColor);  
     }
     else if(mouseOverNode() == false){ 
-      network.clearColors(); 
+      clearColors();
     }
-    
-    network.colorNode(selectedNodeID, selectColor);
-    neighborNodeIDs = c_table.getNeighbors(selectedNodeID);
-    for(int i : neighborNodeIDs){ // Color neighbors of selected node
-      network.colorNode(i, nextMovesColor);
-    }    
+    colorNode(selectedNodeID, selectColor);
+    colorNeighbors(selectedNodeID, nextMovesColor);
   }
 
   void mouseEvent(){ // Handles mouse clicks
@@ -62,6 +72,17 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
           setSelectedNodeID(mouseoverNodeID);
         }
         break;
+      case NODESELECTED:
+        if(mouseoverNodeID != -1){ // value other than indicates that cursor is over some node, so if cursor is clicked over a node, do this..
+          neighborNodeIDs = c_table.getNeighbors(selectedNodeID);  
+          for(int i : neighborNodeIDs){
+            if(mouseoverNodeID == i){
+              clearColors();
+              selectedNodeID = mouseoverNodeID;
+            }
+          }
+        }
+        break;
     }
   }
 
@@ -69,7 +90,7 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     for(int i = 0; i <= network.node_num; i++){ //Create an array of nodes
       Node n = network.getNode(i); 
       if(dist(mouseX,mouseY,n.x,n.y) <= n.radius){
-        setMouseoverNodeID(n.id);
+        setMouseoverNodeID(n.id); 
         return true;
       }
       else{
@@ -78,9 +99,11 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     } 
     return false;
   }
+  
   void setMouseoverNodeID(int i){
     mouseoverNodeID = i;
   }
+  
   void setSelectedNodeID(int i){
     selectedNodeID = i;
   }
