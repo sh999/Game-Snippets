@@ -17,7 +17,7 @@ class Node{
     node_stroke = def_node_stroke;
   }
   void draw(){
-//    moveNode();
+    moveNode();
     colorNode();    
   }
   void moveNode(){
