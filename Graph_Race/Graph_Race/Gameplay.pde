@@ -12,7 +12,7 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     highlightColor = color(255, 0, 0);
     selectColor = color(0, 255, 0);
     possibleMovesColor = color(250,150,150);
-    nextMovesColor = color(150);
+    nextMovesColor = color(255,255,0);
   }
   void draw(){
     network.draw();
@@ -30,7 +30,6 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     if(mouseOverNode() == true){  // Mouseover behavior
       network.colorNode(mouseoverNodeID, highlightColor);
       neighborNodeIDs = c_table.getNeighbors(mouseoverNodeID);
-      println("neighbors = "+neighborNodeIDs);
       for(int i : neighborNodeIDs){
         network.colorNode(i, possibleMovesColor);
       }
@@ -41,14 +40,18 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
   }
   
   void nodeSelectedMode(){
-    neighborNodeIDs = c_table.getNeighbors(mouseoverNodeID);
-//    println("neighbors = "+neighborNodeIDs);
-    for(int i : neighborNodeIDs){
-      network.colorNode(i, selectColor);
+    if(mouseOverNode() == true){  // Mouseover behavior
+      network.colorNode(mouseoverNodeID, highlightColor);
     }
-    network.colorNode(mouseoverNodeID, color(255,255,0)); 
+    else if(mouseOverNode() == false){ 
+      network.clearColors(); 
+    }
     
-    
+    network.colorNode(selectedNodeID, selectColor);
+    neighborNodeIDs = c_table.getNeighbors(selectedNodeID);
+    for(int i : neighborNodeIDs){ // Color neighbors of selected node
+      network.colorNode(i, nextMovesColor);
+    }    
   }
 
   void mouseEvent(){ // Handles mouse clicks
@@ -56,10 +59,9 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
       case NOTHINGSELECTED:
         if(mouseoverNodeID != -1){ // value other than indicates that cursor is over some node, so if cursor is clicked over a node, do this..
           status = Status.NODESELECTED;
+          setSelectedNodeID(mouseoverNodeID);
         }
         break;
-      case NODESELECTED:
-      
     }
   }
 
@@ -71,13 +73,16 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
         return true;
       }
       else{
-        setMouseoverNodeID(-1); //-1 ID = no ID referenced/null
+        setMouseoverNodeID(-1); //-1 ID = no ID referenced/null, or cursor is not over any node
       }
     } 
     return false;
   }
   void setMouseoverNodeID(int i){
     mouseoverNodeID = i;
+  }
+  void setSelectedNodeID(int i){
+    selectedNodeID = i;
   }
 }
 
