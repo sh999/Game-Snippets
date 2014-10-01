@@ -14,6 +14,7 @@ Network network;
 Connection_table c_table;
 Gameplay gameplay;
 Network_Animator animator;
+Gametracker gametracker;
 
 PFont font;
 void setup(){
@@ -27,19 +28,24 @@ void setup(){
   
   c_table = new Connection_table(node_num); //Creates a table of pair of integers from 0-node_num);
   network = new Network(node_num); 
-  gameplay = new Gameplay();
+  gameplay = new Gameplay(); //Controls flow of clicks/events
+  gametracker = new Gametracker(); //Keeps track of travel history, score.  Communicates with gameplay and network
+  
+//  score = new Score();
 //  animator = new Network_Animator(); 
 }
 
 void draw(){
   background(0);
   gameplay.draw();
+  gametracker.draw();
   
 }
 
 void mousePressed(){
 //  setup();
   gameplay.mouseEvent();
+  gametracker.draw();
 }
 
 void keyPressed(){

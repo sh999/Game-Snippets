@@ -1,8 +1,11 @@
 class Edge{
   Node start_node, end_node;
-  Edge(Node start_node, Node end_node){
+  int id;
+
+  Edge(int id, Node start_node, Node end_node){
     this.start_node = start_node;
     this.end_node = end_node;
+    this.id = id;
   }
   void draw(){
     stroke(0,242,255);

@@ -13,12 +13,12 @@ class Network{
     for(int i = 0; i < c_table.getPairNums(); i++){ //Create all edges
       int node1 = c_table.getPair(i, "STARTNODE");
       int node2 = c_table.getPair(i, "ENDNODE"); 
-      edges.add(new Edge((Node)nodes.get(node1),(Node)nodes.get(node2)));
+      edges.add(new Edge(i, (Node)nodes.get(node1),(Node)nodes.get(node2)));
     }
   }
-  void createEdge(int start, int end){ // Create individual edge
-    edge = new Edge((Node)nodes.get(start),(Node)nodes.get(end));
-  }
+  /*void createEdge(int start, int end){ // Create individual edge
+    edge = new Edge(i,(Node)nodes.get(start),(Node)nodes.get(end));
+  }*/
   void draw(){
     fill(255);
     draw_edges();

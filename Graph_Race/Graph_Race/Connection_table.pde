@@ -1,16 +1,17 @@
 class Connection_table{  //Essentially holds pairs table
   int node_num;
   ArrayList pairs;
+  
   Connection_table(int node_num){
     this.node_num = node_num;  
     pairs = new ArrayList();
     createPairs();
     for(int i = 0; i < pairs.size(); i++){
       Pair p = (Pair)pairs.get(i);
-      
 //      println(p.a+"-"+p.b); // Print table of pairs
     }
   }
+  
   void createPairs(){
     for(int i = 0; i < node_num; i++){ // Create pairs of node-node connection 
       for(int j = i+1; j <= node_num; j++){
@@ -20,9 +21,11 @@ class Connection_table{  //Essentially holds pairs table
       }
     }
   }
+  
   int getPairNums(){
     return pairs.size();
   }
+  
   int getPair(int id, String node){ // Create individual node pair
     if(node == "STARTNODE"){
       return ((Pair)pairs.get(id)).a ;
@@ -32,6 +35,7 @@ class Connection_table{  //Essentially holds pairs table
     } 
     return 0;
   }
+  
   ArrayList getNeighbors(int targetNodeID){
     ArrayList neighbors = new ArrayList();
     for(int i = 0; i < pairs.size(); i++){
@@ -44,8 +48,8 @@ class Connection_table{  //Essentially holds pairs table
       }
     }
     return neighbors;
-    
   }
+  
 }
 
 class Pair{

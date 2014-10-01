@@ -25,6 +25,7 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
         nodeSelectedMode();
         break;
     }
+    gametracker.setCurrentNodeID(selectedNodeID);
   }
   
   void colorNode(int nodeID, color c){
@@ -51,7 +52,6 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     else if(mouseOverNode() == false){ 
       clearColors();
     }
-    println("mouse over node = "+mouseoverNodeID);
   }
   
   void nodeSelectedMode(){
@@ -93,12 +93,9 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     boolean b = false;
     for(int i = network.node_num; i >= 0; i--){ //Create an array of nodes
       Node n = network.getNode(i); 
-//      println("node id = "+n.id);
       if(dist(mouseX,mouseY,n.x,n.y) <= n.radius){
-//        print(" match");
         setMouseoverNodeID(n.id); 
         b = true;
-//        return true;
         break;
       }
       else{
