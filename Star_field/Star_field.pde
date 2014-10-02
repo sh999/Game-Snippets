@@ -9,16 +9,21 @@ Get the array of stars working
 StarLayer a, b, c;
 void setup(){
   size(400, 400);
-  a = new StarLayer(80, 2);
-  b = new StarLayer(20, 5);
-  c = new StarLayer(10, 10);
-  
+  background(0);
+  a = new StarLayer(80, 0.1);
+  b = new StarLayer(40, 0.5);
+//  c = new StarLayer(10, 10);
 }
 
 void draw(){
+  background(0);
   a.draw();
   b.draw();
-  c.draw();
+//  c.draw();
+}
+
+void mousePressed(){
+  setup();
 }
 
 
