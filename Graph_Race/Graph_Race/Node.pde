@@ -37,5 +37,5 @@ class Node{
     fill(255, 0, 0);
     text(id, x, y);
   }
-  
 }
+

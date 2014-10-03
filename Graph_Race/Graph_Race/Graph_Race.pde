@@ -13,12 +13,12 @@ the higher the score
 Network network;
 Connection_table c_table;
 Gameplay gameplay;
-Network_Animator animator;
+Network_Modifier n_modifier;
 Gametracker gametracker;
 
 PFont font;
 void setup(){
-  int node_num = 20;
+  int node_num = 10;
   size(800, 800);
   background(0);
   ellipseMode(CENTER);
@@ -30,7 +30,7 @@ void setup(){
   network = new Network(node_num); 
   gameplay = new Gameplay(); //Controls flow of clicks/events
   gametracker = new Gametracker(); //Keeps track of travel history, score.  Communicates with gameplay and network
-  
+  n_modifier = new Network_Modifier();
 //  score = new Score();
 //  animator = new Network_Animator(); 
 }

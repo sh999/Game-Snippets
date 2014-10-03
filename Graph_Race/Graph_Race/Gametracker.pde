@@ -1,4 +1,4 @@
-class Gametracker{
+class Gametracker{ //
   int[] travelHistory;
   int prevNodeID;
   int[] nodeHealth;
@@ -16,15 +16,18 @@ class Gametracker{
     if(tempID != currentNodeID){
       prevNodeID = currentNodeID;
       currentNodeID = tempID;
-      findEdgeID(prevNodeID, currentNodeID);
+      findEdgeID(prevNodeID, currentNodeID, c_table);
     }
   }
-  void findEdgeID(int a, int b){
-  
+ 
+  void findEdgeID(int a, int b, Connection_table c_table){
+    int traveledEdge = c_table.findEdgeID(a, b);
+    
   }
   void draw(){
-    println("prev node = "+prevNodeID);
-    println("current node = "+currentNodeID+"\n");
+//    println("prev node = "+prevNodeID);
+//    println("current node = "+currentNodeID+"\n");
+
     
   }
   

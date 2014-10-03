@@ -1,6 +1,6 @@
-class Network_Animator{
+class Network_Modifier{
   ArrayList nodes;
-  Network_Animator(){
+  Network_Modifier(){
     nodes = new ArrayList(0);
 
   }
@@ -11,7 +11,7 @@ class Network_Animator{
 //      Node a = n.(Node)nodes.get(i);
 //      a.draw();
     }
-    
-    
   }
 }
+  
+  

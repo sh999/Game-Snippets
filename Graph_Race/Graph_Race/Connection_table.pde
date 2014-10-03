@@ -8,15 +8,17 @@ class Connection_table{  //Essentially holds pairs table
     createPairs();
     for(int i = 0; i < pairs.size(); i++){
       Pair p = (Pair)pairs.get(i);
-//      println(p.a+"-"+p.b); // Print table of pairs
+//        println("ID = "+p.id+":"+p.a+"-"+p.b); // Print table of pairs
     }
   }
   
   void createPairs(){
+    int id = 0;
     for(int i = 0; i < node_num; i++){ // Create pairs of node-node connection 
       for(int j = i+1; j <= node_num; j++){
         if(random(100)>80){  
-          pairs.add(new Pair(i,j));
+          pairs.add(new Pair(i,j, id));
+          id = id+1;
         }
       }
     }
@@ -50,13 +52,25 @@ class Connection_table{  //Essentially holds pairs table
     return neighbors;
   }
   
+  int findEdgeID(int start, int end){
+    println();
+    for(int i = 0; i < pairs.size(); i++){
+      Pair p = (Pair)pairs.get(i);      
+      if((p.a == start && p.b == end) || (p.b == start && p.a == end)){  
+        return(p.id);
+      }
+    }
+    return 0;
+  }
 }
 
 class Pair{
   int a, b;
-  Pair(int a, int b){
+  int id;
+  Pair(int a, int b, int id){
     this.a = a;
     this.b = b;
+    this.id = id;
   }
   void display(){
         print("("+a+","+b+")");

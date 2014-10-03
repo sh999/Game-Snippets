@@ -8,9 +8,14 @@ class Edge{
     this.id = id;
   }
   void draw(){
+    stroke(0);
+    strokeWeight(7);
+    line(start_node.x, start_node.y, end_node.x, end_node.y);
     stroke(0,242,255);
     strokeWeight(5);
     line(start_node.x, start_node.y, end_node.x, end_node.y);
+
   }
+  
 }
 
