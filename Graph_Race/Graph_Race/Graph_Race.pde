@@ -15,9 +15,10 @@ Connection_table c_table;
 Gameplay gameplay;
 Network_Modifier n_modifier;
 Gametracker gametracker;
+Colorizer colorizer;
 
 PFont font;
-void setup(){
+void setup( ){
   int node_num = 10;
   size(800, 800);
   background(0);
@@ -31,6 +32,7 @@ void setup(){
   gameplay = new Gameplay(); //Controls flow of clicks/events
   gametracker = new Gametracker(); //Keeps track of travel history, score.  Communicates with gameplay and network
   n_modifier = new Network_Modifier();
+  colorizer = new Colorizer();
 //  score = new Score();
 //  animator = new Network_Animator(); 
 }
