@@ -15,13 +15,19 @@ class Shooter{
     maxSpeed = 4;
     angle = PI/2;
     dAngle = 0;
-    rotSpeed = 0.3;
+    rotSpeed = 0.075;
+    direction = angle;
   }
   
   void update(){
+    
     dy = speed * cos(direction+PI);
     dx = speed * -sin(direction+PI);
-    
+//    dy = speed * cos(PI);
+//    dx = speed * -sin(PI);
+    println("angle = "+degrees(angle));
+    println("dy = "+dy);
+    println("dir = "+direction);
     x = x + dx;
     y = y + dy;
     if(x > width){

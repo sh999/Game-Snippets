@@ -34,7 +34,6 @@ void keyPressed(){
 
 void keyReleased(){
   p1.dAngle = 0;
-
   if(key == CODED){
     if(keyCode == UP){
       p1.direction = p1.angle;
