@@ -32,7 +32,7 @@ void setup( ){
   gameplay = new Gameplay(); //Controls flow of clicks/events
   gametracker = new Gametracker(); //Keeps track of travel history, score.  Communicates with gameplay and network
   n_modifier = new Network_Modifier();
-  colorizer = new Colorizer();
+  colorizer = new Colorizer(node_num);
 //  score = new Score();
 //  animator = new Network_Animator(); 
 }

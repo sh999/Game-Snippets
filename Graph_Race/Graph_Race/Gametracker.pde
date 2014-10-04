@@ -25,9 +25,9 @@ class Gametracker{ //
     
   }
   void draw(){
-    println("prev node = "+prevNodeID);
-    println("current node = "+currentNodeID+"\n");
-    println("traveled ege = "+traveledEdge);
+//    println("prev node = "+prevNodeID);
+//    println("current node = "+currentNodeID+"\n");
+//    println("traveled ege = "+traveledEdge);
 
     
   }

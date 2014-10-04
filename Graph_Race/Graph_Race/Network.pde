@@ -25,8 +25,9 @@ class Network{
     draw_nodes();
   }
   void draw_nodes(){
-    for(int i = 0; i < nodes.size(); i++){
-      Node n = (Node)nodes.get(i);
+    for(int id = 0; id < nodes.size(); id++){
+      Node n = (Node)nodes.get(id);
+      n.node_fill = colorizer.getNodeColor(id);
       n.draw();
     }
   }
@@ -44,11 +45,4 @@ class Network{
     Node n = (Node)nodes.get(id);
     n.node_fill = c;
   }
-  void clearColors(){
-    for(int i = 0; i < nodes.size(); i++){
-      Node n = (Node)nodes.get(i);
-      n.node_fill = n.def_node_fill;
-    }
-  }
-    
 }
