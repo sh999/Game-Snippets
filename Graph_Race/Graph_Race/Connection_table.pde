@@ -8,7 +8,7 @@ class Connection_table{  //Essentially holds pairs table
     createPairs();
     for(int i = 0; i < pairs.size(); i++){
       Pair p = (Pair)pairs.get(i);
-//        println("ID = "+p.id+":"+p.a+"-"+p.b); // Print table of pairs
+        println("ID = "+p.id+":"+p.a+"-"+p.b); // Print table of pairs
     }
   }
   

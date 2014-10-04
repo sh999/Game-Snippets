@@ -12,6 +12,9 @@ class Network_Modifier{
 //      a.draw();
     }
   }
+  color getColor(int id){
+    return color(0,242,255);
+  }
 }
   
   

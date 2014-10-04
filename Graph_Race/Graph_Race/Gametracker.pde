@@ -5,7 +5,7 @@ class Gametracker{ //
   int[] edgeHealth;
   int score;
   int currentNodeID;
-  
+  int traveledEdge;
   Gametracker(){
     currentNodeID = -1;
     prevNodeID = -1;
@@ -21,12 +21,13 @@ class Gametracker{ //
   }
  
   void findEdgeID(int a, int b, Connection_table c_table){
-    int traveledEdge = c_table.findEdgeID(a, b);
+    traveledEdge = c_table.findEdgeID(a, b);
     
   }
   void draw(){
-//    println("prev node = "+prevNodeID);
-//    println("current node = "+currentNodeID+"\n");
+    println("prev node = "+prevNodeID);
+    println("current node = "+currentNodeID+"\n");
+    println("traveled ege = "+traveledEdge);
 
     
   }

@@ -1,17 +1,20 @@
 class Edge{
   Node start_node, end_node;
+  color edge_stroke;
   int id;
 
   Edge(int id, Node start_node, Node end_node){
     this.start_node = start_node;
     this.end_node = end_node;
     this.id = id;
+    edge_stroke = color(0,242,255);
   }
   void draw(){
+    edge_stroke = n_modifier.getColor(id);
     stroke(0);
     strokeWeight(7);
     line(start_node.x, start_node.y, end_node.x, end_node.y);
-    stroke(0,242,255);
+    stroke(edge_stroke);
     strokeWeight(5);
     line(start_node.x, start_node.y, end_node.x, end_node.y);
 
