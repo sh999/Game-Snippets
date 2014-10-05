@@ -48,13 +48,19 @@ class Colorizer{
   }
   
   void edgeDecay(int edgeID){
-    float a = alpha(edge_color_list[edgeID]); 
+    
+    /*float a = alpha(edge_color_list[edgeID]); 
 //    println("traveled edge = "+gametracker.traveledEdge);
-    println("alpha = "+a);
+//    println("alpha = "+a);
     a = a - 5;
-    print("edgeID = "+edgeID);
-    print("decaying");
+//    print("edgeID = "+edgeID);
+//    print("decaying");
     edge_color_list[edgeID] = color(0,242,252,a); 
+    println(alpha(edge_color_list[edgeID]));
+    if(alpha(edge_color_list[edgeID]) <= 0){ 
+      print ("total decay");
+      c_tab
+    }*/
   }
   
 }

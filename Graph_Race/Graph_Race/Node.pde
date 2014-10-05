@@ -5,6 +5,9 @@ class Node{
   float speed;
   color node_fill, def_node_fill;
   color node_stroke, def_node_stroke;
+  
+  
+  
   Node(int id){
     this.id = id;
     x = random(0, width);

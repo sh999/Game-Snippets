@@ -27,7 +27,7 @@ class Network{
   void draw_nodes(){
     for(int id = 0; id < nodes.size(); id++){
       Node n = (Node)nodes.get(id);
-      n.node_fill = colorizer.getNodeColor(id);
+      n.node_fill = nodeColor.getNodeColor(id);
       n.draw();
     }
   }
@@ -45,5 +45,12 @@ class Network{
   void colorNode(int id, color c){
     Node n = (Node)nodes.get(id);
     n.node_fill = c;
+  }
+  void edgeDecay(int id){
+    Edge e = (Edge)edges.get(id);
+    e.decreaseHealth();
+    println("Edge = "+id);
+    println("edge health = "+e.health);
+  
   }
 }

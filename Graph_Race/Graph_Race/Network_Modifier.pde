@@ -7,7 +7,6 @@ class Network_Modifier{
   void moveDown(Network n){
     
     for(int i = 0; i < n.nodes.size(); i++){
-      println(i);
 //      Node a = n.(Node)nodes.get(i);
 //      a.draw();
     }

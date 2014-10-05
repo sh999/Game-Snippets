@@ -20,7 +20,7 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     statusDeterminator();
     gametracker.setCurrentNodeID(selectedNodeID);
 //    println("traveled edge = "+gametracker.traveledEdge);
-    if(gametracker.traveledEdge != 0) colorizer.edgeDecay(gametracker.traveledEdge);
+    
   }
   
   void statusDeterminator(){
@@ -36,29 +36,29 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
 
   void nothingSelectedMode(){ // When no node has been clicked
     if(mouseOverNode() == true){  // Mouseover behavior
-      colorizer.clearColors();
-      colorizer.colorNode(mouseoverNodeID, highlightColor);
-      colorizer.colorNeighbors(mouseoverNodeID, possibleMovesColor);  
+      nodeColor.clearColors();
+      nodeColor.colorNode(mouseoverNodeID, highlightColor);
+      nodeColor.colorNeighbors(mouseoverNodeID, possibleMovesColor);  
     }
     else if(mouseOverNode() == false){ 
-      colorizer.clearColors();
+      nodeColor.clearColors();
     }
   }
   
   void nodeSelectedMode(){
     if(mouseOverNode() == true){  // Mouseover behavior
-      colorizer.clearColors();
-      colorizer.colorNode(mouseoverNodeID, highlightColor);
-      colorizer.colorNeighbors(mouseoverNodeID, possibleMovesColor);  
+      nodeColor.clearColors();
+      nodeColor.colorNode(mouseoverNodeID, highlightColor);
+      nodeColor.colorNeighbors(mouseoverNodeID, possibleMovesColor);  
     }
     else if(mouseOverNode() == false){ 
-      colorizer.clearColors();
+      nodeColor.clearColors();
     }
-    colorizer.colorNode(selectedNodeID, selectColor);
-    colorizer.colorNeighbors(selectedNodeID, nextMovesColor);
+    nodeColor.colorNode(selectedNodeID, selectColor);
+    nodeColor.colorNeighbors(selectedNodeID, nextMovesColor);
   }
 
-  void mouseEvent(){ // Handles mouse clicks
+  void mousePressedEvent(){ // Handles mouse clicks
     switch (status){ // Depending on program status, determines behavior
       case NOTHINGSELECTED:
         if(mouseoverNodeID != -1){ // value other than indicates that cursor is over some node, so if cursor is clicked over a node, do this..
@@ -71,13 +71,22 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
           neighborNodeIDs = c_table.getNeighbors(selectedNodeID);  
           for(int i : neighborNodeIDs){
             if(mouseoverNodeID == i){
-              colorizer.clearColors();
+              nodeColor.clearColors();
               selectedNodeID = mouseoverNodeID;
             }
           }
         }
         break;
     }
+  }
+  
+  void mouseReleasedEvent(){
+    print("traveled Edge = "+gametracker.traveledEdge);
+    if(gametracker.traveledEdge != -1){ 
+//      print("traveled Edge = "+gametracker.traveledEdge);
+//      network.edgeDecay(gametracker.traveledEdge);
+    }
+      
   }
 
   boolean mouseOverNode(){ // Checks if cursor is over a node, also lets known what node is being cursored over by calling setMouseoverNodeID()

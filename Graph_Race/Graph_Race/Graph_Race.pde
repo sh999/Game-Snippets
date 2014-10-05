@@ -16,10 +16,11 @@ Gameplay gameplay;
 Network_Modifier n_modifier;
 Gametracker gametracker;
 Colorizer colorizer;
+NodeColor nodeColor;
 
 PFont font;
 void setup( ){
-  int node_num = 20;
+  int node_num = 6;
   size(800, 800);
   background(0);
   ellipseMode(CENTER);
@@ -33,6 +34,7 @@ void setup( ){
   gametracker = new Gametracker(); //Keeps track of travel history, score.  Communicates with gameplay and network
   n_modifier = new Network_Modifier();
   colorizer = new Colorizer(node_num);
+  nodeColor = new NodeColor(node_num);
 //  score = new Score();
 //  animator = new Network_Animator(); 
 }
@@ -46,8 +48,12 @@ void draw(){
 
 void mousePressed(){
 //  setup();
-  gameplay.mouseEvent();
+  gameplay.mousePressedEvent();
   gametracker.draw();
+}
+
+void mouseReleased(){
+  gameplay.mouseReleasedEvent();
 }
 
 void keyPressed(){
