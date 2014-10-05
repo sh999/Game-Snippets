@@ -10,7 +10,7 @@ class Edge{
     edge_stroke = color(0,242,255);
   }
   void draw(){
-    edge_stroke = n_modifier.getColor(id);
+//    edge_stroke = n_modifier.getColor(id);
     stroke(0);
     strokeWeight(7);
     line(start_node.x, start_node.y, end_node.x, end_node.y);

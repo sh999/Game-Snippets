@@ -16,7 +16,7 @@ class Connection_table{  //Essentially holds pairs table
     int id = 0;
     for(int i = 0; i < node_num; i++){ // Create pairs of node-node connection 
       for(int j = i+1; j <= node_num; j++){
-        if(random(100)>80){  
+        if(random(100)>80){  // Not all possible edges will be drawn, only above threshold
           pairs.add(new Pair(i,j, id));
           id = id+1;
         }

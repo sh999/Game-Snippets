@@ -19,6 +19,8 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     network.draw();
     statusDeterminator();
     gametracker.setCurrentNodeID(selectedNodeID);
+//    println("traveled edge = "+gametracker.traveledEdge);
+    if(gametracker.traveledEdge != 0) colorizer.edgeDecay(gametracker.traveledEdge);
   }
   
   void statusDeterminator(){

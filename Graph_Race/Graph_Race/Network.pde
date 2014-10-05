@@ -34,6 +34,7 @@ class Network{
   void draw_edges(){
     for(int i = 0; i < edges.size(); i++){
       Edge e = (Edge)edges.get(i);
+      e.edge_stroke = colorizer.getEdgeColor(i);
       e.draw();
     }
   }

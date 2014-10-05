@@ -1,4 +1,4 @@
-class Gametracker{ //
+class Gametracker{ // Called by Gameplay.draw().  Keeps track of edge that has been traveled
   int[] travelHistory;
   int prevNodeID;
   int[] nodeHealth;
