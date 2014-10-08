@@ -45,7 +45,7 @@ class Edge{
     midpoint = PVector.sub(point1, point2);
     midpoint.div(2);
     midpoint = PVector.add(midpoint, point2);
-    line(point1.x, point1.y, point2.x, point2.y);
+
     fill(200,9,9);
     text(health, midpoint.x, midpoint.y);
     

@@ -49,8 +49,7 @@ class Network{
   void edgeDecay(int id){
     Edge e = (Edge)edges.get(id);
     e.decreaseHealth();
-    println("Edge = "+id);
-    println("edge health = "+e.health);
+    
   
   }
 }
