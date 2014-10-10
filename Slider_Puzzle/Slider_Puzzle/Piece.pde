@@ -1,9 +1,9 @@
-class Piece{
+class Tile{
   float x, y;
   float size;
   float col;
   int num;
-  Piece(float x, float y, int num){
+  Tile(float x, float y, int num){
     this.x = x;
     this.y = y;
     this.num = num;
@@ -11,7 +11,10 @@ class Piece{
     col = color(255,244,3);
   }
   void adraw(){
-    rect(x, y, size, size);
     
+    fill(255);
+    rect(x, y, size, size);
+    fill(255,0,0);
+    text(num, x+size/2, y+size/2);
   }
 }

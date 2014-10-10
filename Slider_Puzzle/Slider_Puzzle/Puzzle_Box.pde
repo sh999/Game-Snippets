@@ -1,16 +1,15 @@
 class Puzzle_Box {
-  Piece[] pieces;
+  Tile[] tiles;
+  int rowAmt = 4; // tiles per row
   Puzzle_Box() {
-    pieces = new Piece[15];
-    for (int i = 0; i < pieces.length; i++) {
-      pieces[i] = new Piece(int(i/4)*50, int(i/4)*50, 1);
+    tiles = new Tile[15];
+    for (int i = 0; i < tiles.length; i++) {
+      tiles[i] = new Tile(int(i%rowAmt*80), int(i/4)*80, i+1);
     } 
   }
-  
   void draw() {
-
-    for (int i = 0; i < pieces.length; i++) {
-      pieces[i].adraw();
+    for (int i = 0; i < tiles.length; i++) {
+      tiles[i].adraw();
     }
   }
 }
