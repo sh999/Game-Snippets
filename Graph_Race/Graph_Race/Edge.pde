@@ -39,14 +39,12 @@ class Edge{
     strokeWeight(5);
     line(start_node.x, start_node.y, end_node.x, end_node.y);
     
-    
-    
     point2.set(end_node.x, end_node.y);
     midpoint = PVector.sub(point1, point2);
     midpoint.div(2);
     midpoint = PVector.add(midpoint, point2);
 
-    fill(200,9,9);
+    fill(200,244,9);
     text(health, midpoint.x, midpoint.y);
     
   }

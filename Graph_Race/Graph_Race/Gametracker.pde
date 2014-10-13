@@ -26,7 +26,8 @@ class Gametracker{ // Called by Gameplay.draw().  Keeps track of edge that has b
   }
  
   void findEdgeID(int a, int b, Connection_table c_table){
-    traveledEdge = c_table.findEdgeID(a, b);
+//    traveledEdge = c_table.findEdgeID(a, b);
+      traveledEdge = 0;
   }
   void draw(){
 //    println("prev node = "+prevNodeID);

@@ -53,7 +53,6 @@ class Connection_table{  //Essentially holds pairs table
   }
   
   int findEdgeID(int start, int end){
-    println();
     for(int i = 0; i < pairs.size(); i++){
       Pair p = (Pair)pairs.get(i);      
       if((p.a == start && p.b == end) || (p.b == start && p.a == end)){  
