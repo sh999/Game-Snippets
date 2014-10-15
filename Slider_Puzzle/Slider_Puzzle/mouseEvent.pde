@@ -1,8 +1,11 @@
 class MouseEvent{
   Tile[] tiles;
+  int[] someArray;
   MouseEvent(){
     tiles = new Tile[15];
     tiles = puzzleBox.getTiles();
+    
+    
   }
   void processEvent(){
      
@@ -11,7 +14,7 @@ class MouseEvent{
     }
     
     /*
-    Get mouseClic position
+    Get mouseClick position
     Iterate through each tile
     Check if mouseClick is inside each tile
     */

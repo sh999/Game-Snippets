@@ -11,8 +11,11 @@ void setup(){
   size(500,500);
   background(0);
   font = loadFont("Serif-20.vlw");
-  mouseEvent = new MouseEvent();
+  
   puzzleBox = new PuzzleBox();
+  mouseEvent = new MouseEvent();
+
+  
 }
 
 void draw(){
@@ -23,3 +26,5 @@ void draw(){
 void mouseReleased(){
   mouseEvent.processEvent();
 }
+
+
