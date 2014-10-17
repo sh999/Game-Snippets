@@ -2,7 +2,6 @@ class Edge{
   Node start_node, end_node;
   color edge_stroke;
   int id;
-  
   int health;
   PVector point1 = new PVector();
   PVector point2 = new PVector();
@@ -13,25 +12,18 @@ class Edge{
     this.end_node = end_node;
     this.id = id;
     edge_stroke = color(0,242,255);
-    
     health = 100;
-    
     point1 = new PVector();
     point2 = new PVector();
-    point3 = new PVector();
-    
+    point3 = new PVector();    
     point1.set(start_node.x, start_node.y);
-
-    
+ 
   }
   void decreaseHealth(){
     health = health - 20;
   }
-  
-  
-  
+ 
   void draw(){
-//    edge_stroke = n_modifier.getColor(id);
     stroke(0);
     strokeWeight(7);
     line(start_node.x, start_node.y, end_node.x, end_node.y);

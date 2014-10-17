@@ -13,12 +13,10 @@ class Gametracker{ // Called by Gameplay.draw().  Keeps track of edge that has b
   }
   
   void setCurrentNodeID(int id){
-    
     int tempID = id;
 //    print("temp id = "+tempID);
 //    print("currentNode id = "+currentNodeID);
     if(tempID != currentNodeID){
-      
       prevNodeID = currentNodeID;
       currentNodeID = tempID;
       findEdgeID(prevNodeID, currentNodeID, c_table);
@@ -32,9 +30,6 @@ class Gametracker{ // Called by Gameplay.draw().  Keeps track of edge that has b
   void draw(){
 //    println("prev node = "+prevNodeID);
 //    println("current node = "+currentNodeID+"\n");
-//    println("traveled ege = "+traveledEdge);
-
-    
+//    println("traveled ege = "+traveledEdge);    
   }
-  
 }

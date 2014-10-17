@@ -16,14 +16,13 @@ class Network{
       edges.add(new Edge(i, (Node)nodes.get(node1),(Node)nodes.get(node2)));
     }
   }
-  /*void createEdge(int start, int end){ // Create individual edge
-    edge = new Edge(i,(Node)nodes.get(start),(Node)nodes.get(end));
-  }*/
+  
   void draw(){
     fill(255);
     draw_edges();
     draw_nodes();
   }
+  
   void draw_nodes(){
     for(int id = 0; id < nodes.size(); id++){
       Node n = (Node)nodes.get(id);
@@ -31,6 +30,7 @@ class Network{
       n.draw();
     }
   }
+  
   void draw_edges(){
     for(int i = 0; i < edges.size(); i++){
       Edge e = (Edge)edges.get(i);
@@ -38,14 +38,17 @@ class Network{
       e.draw();
     }
   }
+  
   Node getNode(int id){
     Node a = (Node)nodes.get(id);
     return a;
   }  
+  
   void colorNode(int id, color c){
     Node n = (Node)nodes.get(id);
     n.node_fill = c;
   }
+  
   void edgeDecay(int id){
     Edge e = (Edge)edges.get(id);
     e.decreaseHealth();

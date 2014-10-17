@@ -17,7 +17,6 @@ Network_Modifier n_modifier;
 Gametracker gametracker;
 Colorizer colorizer;
 NodeColor nodeColor;
-
 PFont font;
 void setup( ){
   int node_num = 6;
@@ -27,7 +26,6 @@ void setup( ){
   textAlign(CENTER, CENTER);
   font = loadFont("MyriadPro-Regular-30.vlw");
   textFont(font, 20);
-  
   c_table = new Connection_table(node_num); //Creates a table of pair of integers from 0-node_num);
   network = new Network(node_num); 
   gameplay = new Gameplay(); //Controls flow of clicks/events
@@ -35,19 +33,15 @@ void setup( ){
   n_modifier = new Network_Modifier();
   colorizer = new Colorizer(node_num);
   nodeColor = new NodeColor(node_num);
-//  score = new Score();
-//  animator = new Network_Animator(); 
 }
 
 void draw(){
   background(0);
   gameplay.draw();
   gametracker.draw();
-  
 }
 
 void mousePressed(){
-//  setup();
   gameplay.mousePressedEvent();
   gametracker.draw();
 }
