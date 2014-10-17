@@ -8,7 +8,7 @@ class Connection_table{  //Essentially holds pairs table
     createPairs();
     for(int i = 0; i < pairs.size(); i++){
       Pair p = (Pair)pairs.get(i);
-        println("ID = "+p.id+":"+p.a+"-"+p.b); // Print table of pairs
+//        println("ID = "+p.id+":"+p.a+"-"+p.b); // Print table of pairs
     }
   }
   
@@ -55,11 +55,13 @@ class Connection_table{  //Essentially holds pairs table
   int findEdgeID(int start, int end){
     for(int i = 0; i < pairs.size(); i++){
       Pair p = (Pair)pairs.get(i);      
+      println("start node = "+start+".  "+"end node = "+end);
       if((p.a == start && p.b == end) || (p.b == start && p.a == end)){  
+        print("\nTraveled edge = "+p.id);
         return(p.id);
       }
     }
-    return 0;
+    return -1;
   }
 }
 

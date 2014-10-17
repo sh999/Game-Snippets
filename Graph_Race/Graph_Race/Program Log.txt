@@ -1,4 +1,5 @@
 Program Log
 10/13:  Figuring out where traveled edge breaks down
-	Gameplay calls gametracker.setCurrentNodeID	
-	gametracker.setCurrentNodeID calls findEdgeID, which sets traveledEdge by calling c_table.findEdgeID
+	Gameplay.draw() calls gametracker.setCurrentNodeID()
+	gametracker.setCurrentNodeID() calls findEdgeID(), which sets traveledEdge by calling c_table.findEdgeID()
+Gameplay.draw() -> gametracker.setCurrentNodeID(selectedNodeID)
