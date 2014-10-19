@@ -5,12 +5,11 @@ class Dot{
     radius = 15;
     this.x = x;
     this.y = y;
-    
-    
   }
+  
   void update(){
     fill(240,200,200);
     ellipse(x, y, radius, radius);
-    
   }
+  
 }

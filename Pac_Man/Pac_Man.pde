@@ -1,4 +1,12 @@
 //Pac-Man clone
+//Todo: Restrict movement
+/*
+Idea:
+pressing direction would set nextMovement to that direction
+  pressing direction would not move player immediately
+player "mover" would then move in the appropriate spot according to the nextMovement
+for now, make it move in x, y axis only
+*/
 Pacman pacman;
 ArrayList<Dot> dots;
 void setup(){
@@ -15,7 +23,7 @@ void draw(){
     Dot dot = dots.get(i);
     dot.update();
   }
-  pacman.update();
+  pacman.update(); // Calculates Pac-man's movement
   eatCheck();
 }
 
@@ -28,7 +36,7 @@ void addDots(){
 }
 
 void keyPressed(){
-  if(key == CODED){
+  /*if(key == CODED){
     if(keyCode == RIGHT && pacman.dx != 1){
       pacman.dx = pacman.speed;
       pacman.dy = 0;
@@ -44,10 +52,25 @@ void keyPressed(){
     if(keyCode == UP && pacman.dy != -1){
       pacman.dy = -pacman.speed;
       pacman.dx = 0;
-
     }
-    
+  }*/
+  String nextMove = ""; 
+  if(key == CODED){
+    if(keyCode == RIGHT){
+      nextMove = "right";
+    }
+    if(keyCode == LEFT){
+      nextMove = "left";
+    }
+    if(keyCode == UP){
+      nextMove = "up";
+    }
+    if(keyCode == DOWN){
+      nextMove = "down";
+    }
   }
+//  println("Pressed key = "+nextMove);
+  pacman.setNextMove(nextMove);
 }
 
 void eatCheck(){
