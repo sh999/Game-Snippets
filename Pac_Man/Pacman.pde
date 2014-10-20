@@ -21,43 +21,33 @@ class Pacman{
   }
   
   void update(){
-    
-    /* Old mov't algorithm
-    x = x + dx; //Changes pac man's movement
-    y = y + dy;*/ 
-    
-    /* newer mov't algorithm
-    if(nextMove == "right"){
-      dx = speed;
-      dy = 0;
-    }
-    else if(nextMove == "up"){
+   
+    x = x + 0.5;
 
-      dy = -speed;
-      dx = 0;
-    }
-    x = x + dx;
-    y = y + dy;*/
-    
-    
-    
-    if(nextMove == "up"){
-      dx = 0;
-      dy = -speed;
-    }
-    else if(nextMove == "down"){
-      dx = 0;
-      dy = speed;
-    }
-    
-    x = x + dx;
-    y = y + dy;
-    
+//    move();
     fill(pacCol);
     ellipse(x, y, radius, radius);
-    
+  }
+  void move(){
+    if(x%50 <= 2){
+      x = width/2;
+        
+      if(nextMove == "up"){
+        dx = 0;
+        dy = -speed;
+      }
+      else if(nextMove == "down"){
+        dx = 0;
+        dy = speed;
+      }
+      
+      x = x + dx;
+      y = y + dy;
+    }
     
   }
+    
+  
   void setNextMove(String movement){
     nextMove = movement;
   }
