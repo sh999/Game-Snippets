@@ -80,9 +80,10 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
   }
   
   void mouseReleasedEvent(){
-//    print("traveled Edge sdf= "+gametracker.traveledEdge+" ");
+    println("released");
+    println("1)traveledEdge = "+gametracker.traveledEdge);
     if(gametracker.traveledEdge != -1){ 
-//      print("traveled Edge = "+gametracker.traveledEdge);
+      println("2)traveled Edge = "+gametracker.traveledEdge);
       println("decaying edge...");
       network.edgeDecay(gametracker.traveledEdge);
     }
