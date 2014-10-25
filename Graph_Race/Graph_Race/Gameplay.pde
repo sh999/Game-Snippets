@@ -87,6 +87,7 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
       println("decaying edge...");
       network.edgeDecay(edgeTracker.traveledEdge);
     }
+    else print("not decaying");
       
   }
 

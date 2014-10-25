@@ -57,7 +57,7 @@ class Connection_table{  //Essentially holds pairs table
       Pair p = (Pair)pairs.get(i);      
       println("start node = "+start+".  "+"end node = "+end);
       if((p.a == start && p.b == end) || (p.b == start && p.a == end)){  
-        print("\nTraveled edge = "+p.id);
+//        print("\nTraveled edge = "+p.id);
         return(p.id);
       }
     }
