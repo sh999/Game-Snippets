@@ -14,7 +14,7 @@ Network network;
 Connection_table c_table;
 Gameplay gameplay;
 Network_Modifier n_modifier;
-Gametracker gametracker;
+EdgeTracker edgeTracker;
 Colorizer colorizer;
 NodeColor nodeColor;
 PFont font;
@@ -31,7 +31,7 @@ void setup( ){
   c_table = new Connection_table(node_num); //Creates a table of pair of integers from 0-node_num);
   network = new Network(node_num); 
   gameplay = new Gameplay(); //Controls flow of clicks/events
-  gametracker = new Gametracker(); //Keeps track of travel history, score.  Communicates with gameplay and network
+  edgeTracker = new EdgeTracker(); //Keeps track of travel history, score.  Communicates with gameplay and network
   n_modifier = new Network_Modifier();
   colorizer = new Colorizer(node_num);
   nodeColor = new NodeColor(node_num);
@@ -40,12 +40,12 @@ void setup( ){
 void draw(){
   background(0);
   gameplay.draw();
-  gametracker.draw();
+  edgeTracker.draw();
 }
 
 void mousePressed(){
   gameplay.mousePressedEvent();
-  gametracker.draw();
+  edgeTracker.draw();
 }
 
 void mouseReleased(){

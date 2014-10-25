@@ -1,4 +1,4 @@
-class Gametracker{ // Called by Gameplay.draw().  Keeps track of edge that has been traveled
+class EdgeTracker{ // Called by Gameplay.draw().  Keeps track of edge that has been traveled
   int[] travelHistory;
   int prevNodeID;
   int[] nodeHealth;
@@ -6,7 +6,7 @@ class Gametracker{ // Called by Gameplay.draw().  Keeps track of edge that has b
   int score;
   int currentNodeID;
   int traveledEdge;
-  Gametracker(){
+  EdgeTracker(){
     currentNodeID = -1;
     prevNodeID = -1;
 //    print("currentNode id = "+currentNodeID);
