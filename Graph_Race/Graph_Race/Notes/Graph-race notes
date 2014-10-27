@@ -9,3 +9,16 @@ mouse is released
 gameplay.mouseReleasedEvent()
 
 traveledEdge is set in edgeTracker
+
+findEdgeID is called by edgeTracker; it sets Pair collection, and checks it with values passed into it (start and end nodes)
+	i.e. Edge tracker sends start/end node, and findEdgeID finds the Edge from that info
+I see a potential proglem here, where edge decay is set during mouse released event, but edge finding happens throughout draw().  Need to have no concurrency, but to have one function controlling find edge then edge decay.
+
+Another point of confusion: 
+findEdgeID is found in EdgeTracker and ConnectionTable.  Maybe these two classes should be merged
+
+MousePressed changes status depending on conditions
+
+At every draw frame, gameplay.draw() is called
+
+There are two functions that sets traveledEdge, edgetracker.setCurrentNodeID and findEdgeID

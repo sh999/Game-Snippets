@@ -62,7 +62,7 @@ class Connection_table{  //Essentially holds pairs table
       }
     }
     print("=====================");
-    return -1;
+    return -1; // Deault value is -1.  Can't do NULL?
   }
 }
 

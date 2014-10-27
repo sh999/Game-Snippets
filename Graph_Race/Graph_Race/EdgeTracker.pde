@@ -12,14 +12,16 @@ class EdgeTracker{ // Called by Gameplay.draw().  Keeps track of edge that has b
 //    print("currentNode id = "+currentNodeID);
   }
   
-  void setCurrentNodeID(int id){
+  void setCurrentNodeID(int id){  // Sets in memory node that was just selected and the previous node selected.  
+                                  // Calls another function that returns the edge traveled between these two nodes
     int tempID = id;
 //    print("temp id = "+tempID);
 //    print("currentNode id = "+currentNodeID);
     if(tempID != currentNodeID){
       prevNodeID = currentNodeID;
       currentNodeID = tempID;
-      findEdgeID(prevNodeID, currentNodeID, c_table);
+      traveledEdge = c_table.findEdgeID(prevNodeID, currentNodeID);
+//      findEdgeID(prevNodeID, currentNodeID, c_table);
     }
   }
  
