@@ -21,4 +21,4 @@ MousePressed changes status depending on conditions
 
 At every draw frame, gameplay.draw() is called
 
-There are two functions that sets traveledEdge, edgetracker.setCurrentNodeID and findEdgeID
+There are two functions that sets traveledEdge, edgetracker.setCurrentNodeID and findEdgeID.  Need to have just one.
