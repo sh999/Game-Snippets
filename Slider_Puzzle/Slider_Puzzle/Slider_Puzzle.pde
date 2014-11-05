@@ -2,6 +2,8 @@
 Emulate classic slider puzzle game
 e.g.
 http://en.wikipedia.org/wiki/Sliding_puzzle
+11/4/14: Implement moving tile to empty space
+  Check what tile was clicked
 */
 MouseEvent mouseEvent;
 PuzzleBox puzzleBox;
@@ -24,7 +26,7 @@ void draw(){
 }
 
 void mouseReleased(){
-  mouseEvent.processEvent();
+  mouseEvent.moveTileIfPossible();
 }
 
 

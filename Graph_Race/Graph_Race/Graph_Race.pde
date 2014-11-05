@@ -20,7 +20,6 @@ NodeColor nodeColor;
 PFont font;
 void setup( ){
   int node_num = 6;
-  print("RESTART\n");
 
   size(800, 800);
   background(0);

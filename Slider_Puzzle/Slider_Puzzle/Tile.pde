@@ -1,4 +1,4 @@
-class Tile{
+class Tile{ // Individual tile object.  Contains drawing method for a given tile
   float x, y;
   float size;
   float col;
@@ -9,12 +9,15 @@ class Tile{
     this.num = num;
     size = 50;
     col = color(255,244,3);
+    
   }
   void adraw(){
-    
-    fill(255);
-    rect(x, y, size, size);
-    fill(255,0,0);
-    text(num, x+size/2, y+size/2);
+    if(num != 16){
+      fill(255);
+      rect(x, y, size, size);
+      fill(255,0,0);
+      
+      text(num, x+size/2, y+size/2);
+    }
   }
 }

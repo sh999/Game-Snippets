@@ -19,7 +19,6 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     network.draw();
     statusDeterminator();
     edgeTracker.setCurrentNodeID(selectedNodeID);
-//    println("traveled edge = "+edgeTracker.traveledEdge);
   }
   
   void statusDeterminator(){
@@ -80,14 +79,12 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
   }
   
   void mouseReleasedEvent(){
-    println("released");
-    println("1)traveledEdge = "+edgeTracker.traveledEdge);
+    
     if(edgeTracker.traveledEdge != -1){ 
-      println("2)traveled Edge = "+edgeTracker.traveledEdge);
-      println("decaying edge...");
+    
       network.edgeDecay(edgeTracker.traveledEdge);
     }
-    else println("not decaying");
+    
       
   }
 
