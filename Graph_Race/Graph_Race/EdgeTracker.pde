@@ -13,6 +13,7 @@ class EdgeTracker{ // Called by Gameplay.draw().  Keeps track of edge that has b
   
   void setCurrentNodeID(int id){  // Sets in memory node that was just selected and the previous node selected.  
                                   // Calls another function that returns the edge traveled between these two nodes
+                                  // Called by gameplay.draw()
     int tempID = id;
 
     if(tempID != currentNodeID){
@@ -22,9 +23,7 @@ class EdgeTracker{ // Called by Gameplay.draw().  Keeps track of edge that has b
     }
   }
  
-  void findEdgeID(int a, int b, Connection_table c_table){
-    traveledEdge = c_table.findEdgeID(a, b);
-  }
+ 
   void draw(){
    
   }

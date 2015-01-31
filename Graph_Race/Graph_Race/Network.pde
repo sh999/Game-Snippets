@@ -49,7 +49,7 @@ class Network{
     n.node_fill = c;
   }
   
-  void edgeDecay(int id){
+  void edgeDecay(int id){  // Decreases edge health.  Called by gameplay.mouseReleasedEvent()
     Edge e = (Edge)edges.get(id);
     e.decreaseHealth();
     

@@ -6,16 +6,27 @@ Bugs:
 initial thrust causes ship to turn sideways
 */
 Shooter p1;
+Rock rock;
 void setup(){
-  size(800,800);
+  size(800,800,P2D);
   background(0);
   noStroke();
-  p1 = new Shooter(width/2,height/2);
+  p1 = new Shooter(width/2, height/2);
+  rock = new Rock(width/2, height/2);
 }
 
 void draw(){
   background(0);
+    rock.drawRock();
+
   p1.update();
+  ellipse(width/2,height/2,33,33);
+   beginShape();
+   vertex(200,200);
+    vertex(10,0);
+    vertex(10,20);
+    vertex(3,4);
+    endShape(CLOSE);
 }
 
 void keyPressed(){

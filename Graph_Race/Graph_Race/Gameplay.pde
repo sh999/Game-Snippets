@@ -78,11 +78,11 @@ class Gameplay{ // Mediates user click interaction and directs animation of netw
     }
   }
   
-  void mouseReleasedEvent(){
+  void mouseReleasedEvent(){ // Decay is triggered upon mousereleased on the edge found by edgeTracker.traveledEdge
     
     if(edgeTracker.traveledEdge != -1){ 
     
-      network.edgeDecay(edgeTracker.traveledEdge);
+      network.edgeDecay(edgeTracker.traveledEdge); 
     }
     
       
