@@ -6,15 +6,21 @@ pressing direction would set nextMovement to that direction
   pressing direction would not move player immediately
 player "mover" would then move in the appropriate spot according to the nextMovement
 for now, make it move in x, y axis only
+To do:
+Detect square ahead that pacman will hit; this is the square where the turn motion will happen
 */
 Pacman pacman;
+int tileSize;
 ArrayList<Dot> dots;
+TileSet tiles;
 void setup(){
   size(400, 400);
   background(0);
   pacman = new Pacman();
+  tileSize = 50;
   dots = new ArrayList<Dot>();
   addDots();
+  tiles = new TileSet(
 }
 
 void draw(){
@@ -28,8 +34,8 @@ void draw(){
 }
 
 void addDots(){
-  for(int y = 0; y <= 400; y = y + 50){
-    for(int x = 0; x <= 400; x = x + 50){
+  for(int y = 0; y <= 400; y = y + tileSize){
+    for(int x = 0; x <= 400; x = x + tileSize){
       dots.add(new Dot(x, y));
     }
   }
@@ -69,11 +75,11 @@ void keyPressed(){
       nextMove = "down";
     }
   }
-//  println("Pressed key = "+nextMove);
   pacman.setNextMove(nextMove);
+  println("nextmove = " + nextMove);
 }
 
-void eatCheck(){
+void eatCheck(){  // Allows pacman to eat dots
   for(int i = 0; i < dots.size(); i++){
     Dot dot = dots.get(i);
     if(dist(dot.x,dot.y,pacman.x,pacman.y) < pacman.radius/2){

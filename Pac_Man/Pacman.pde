@@ -21,17 +21,20 @@ class Pacman{
   }
   
   void update(){
-   
-    x = x + 0.5;
-
-//    move();
+//    x = x + 0.5; 
+//    calcMove();
+    drawPacman();
+  }
+  
+  void drawPacman(){
+    noStroke();
     fill(pacCol);
     ellipse(x, y, radius, radius);
   }
-  void move(){
-    if(x%50 <= 2){
+  
+  void calcMove(){
+    if(x%50 <= 2){ // ??
       x = width/2;
-        
       if(nextMove == "up"){
         dx = 0;
         dy = -speed;
@@ -40,16 +43,12 @@ class Pacman{
         dx = 0;
         dy = speed;
       }
-      
       x = x + dx;
       y = y + dy;
     }
-    
   }
     
-  
   void setNextMove(String movement){
     nextMove = movement;
   }
-  
 }
