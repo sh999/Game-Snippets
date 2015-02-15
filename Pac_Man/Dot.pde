@@ -11,5 +11,4 @@ class Dot{
     fill(240,200,200);
     ellipse(x, y, radius, radius);
   }
-  
 }

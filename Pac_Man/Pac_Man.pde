@@ -12,7 +12,7 @@ Detect square ahead that pacman will hit; this is the square where the turn moti
 Pacman pacman;
 int tileSize;
 ArrayList<Dot> dots;
-TileSet tiles;
+TileSet tileSet;
 void setup(){
   size(400, 400);
   background(0);
@@ -20,7 +20,7 @@ void setup(){
   tileSize = 50;
   dots = new ArrayList<Dot>();
   addDots();
-  tiles = new TileSet(
+  tileSet = new TileSet(tileSize, width);
 }
 
 void draw(){
@@ -31,6 +31,7 @@ void draw(){
   }
   pacman.update(); // Calculates Pac-man's movement
   eatCheck();
+  tileSet.update();
 }
 
 void addDots(){

@@ -1,6 +1,27 @@
 class TileSet{
-  int size;
-  TileSet(int size){
-    this.size = size;
+  int tileSize, setSize, squaresInRow;
+  Tile[] t;
+  TileSet(int tileSize, int setSize){
+    this.tileSize = tileSize;
+    this.setSize = setSize;
+    this.squaresInRow = setSize / tileSize;
+    t = new Tile[64];
+    int n = 0;
+    for(int i = 0; i < squaresInRow; i++){
+      for(int j = 0; j < squaresInRow; j++){
+        t[n] = new Tile(j, i, tileSize);
+        n = n + 1;
+      }
+    }
+  }
+  
+  void update(){
+    int n = 0;
+    for(int i = 0; i < squaresInRow; i++){
+      for(int j = 0; j < squaresInRow; j++){
+        t[n].drawTile();
+        n = n + 1;
+      }
+    }
   }
 }
