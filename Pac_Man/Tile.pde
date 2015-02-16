@@ -7,9 +7,14 @@ class Tile{
   }
   
   void drawTile(){
-    println("x = " + x + " y = " + y + " size = " + size);
+    rectMode(CENTER);
+//    println("x = " + x + " y = " + y + " size = " + size);
     noFill();
     stroke(255);
     rect(x, y, size, size);
   }
+  
+  void highlight(int row, int col){
+  }
+  
 }

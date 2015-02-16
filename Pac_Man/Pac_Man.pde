@@ -8,6 +8,7 @@ player "mover" would then move in the appropriate spot according to the nextMove
 for now, make it move in x, y axis only
 To do:
 Detect square ahead that pacman will hit; this is the square where the turn motion will happen
+Highlight tile
 */
 Pacman pacman;
 int tileSize;
@@ -32,6 +33,15 @@ void draw(){
   pacman.update(); // Calculates Pac-man's movement
   eatCheck();
   tileSet.update();
+  pacmanTileInteraction();
+}
+
+void pacmanTileInteraction(){
+  
+  int row = int((pacman.x + tileSize) / tileSize);
+  
+  println(row);
+//  text(row,pacman.x+22,pacman.y+22);
 }
 
 void addDots(){
