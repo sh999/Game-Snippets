@@ -20,7 +20,6 @@ class Shooter{
   }
   
   void update(){
-    
     dy = speed * cos(direction+PI);
     dx = speed * -sin(direction+PI);
 //    dy = speed * cos(PI);
@@ -42,11 +41,8 @@ class Shooter{
     else if(y < 0){
       y = height - y;
     }
-    
-    
     angle = angle + dAngle;
     translate(x, y);
-    
     rotate(angle);
     triangle(0,-10,7,20,-7,20);
   } 
