@@ -15,6 +15,12 @@ class TileSet{
     }
   }
   
+  void colorTile(int x, int y, color c){
+    /*
+    x and y are tile coordinates to be colored
+    */
+  }
+
   void update(){
     int n = 0;
     for(int i = 0; i < squaresInRow; i++){

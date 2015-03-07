@@ -1,16 +1,16 @@
 class Tile{
-  int x, y, size;
+  int x, y, size, fillColor;
   Tile(int x, int y, int size){
     this.size = size;
     this.x = x * size;
     this.y = y * size;
+    this.fillColor = color(0);
   }
   
   void drawTile(){
     rectMode(CENTER);
-//    println("x = " + x + " y = " + y + " size = " + size);
-    noFill();
-    stroke(255);
+    fill(fillColor);
+    stroke(255, 255, 0);
     rect(x, y, size, size);
   }
   

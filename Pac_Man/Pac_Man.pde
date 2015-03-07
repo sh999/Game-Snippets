@@ -26,22 +26,36 @@ void setup(){
 
 void draw(){
   background(0);
+  drawTiles();
+  drawDots();
+  drawPacMan();
+  checkInteractions();
+}
+
+void drawTiles(){
+  tileSet.colorTile(3, 3, color(255, 255, 0));
+  tileSet.update();
+}
+
+void drawDots(){
   for(int i = 0; i < dots.size(); i++){
     Dot dot = dots.get(i);
     dot.update();
   }
+}
+
+void drawPacMan(){
   pacman.update(); // Calculates Pac-man's movement
-  eatCheck();
-  tileSet.update();
+}
+
+void checkInteractions(){
+  eatCheck(); // Allows Pac-Man to eat dots
   pacmanTileInteraction();
 }
 
 void pacmanTileInteraction(){
-  
   int row = int((pacman.x + tileSize) / tileSize);
-  
-  println(row);
-//  text(row,pacman.x+22,pacman.y+22);
+  text(row,pacman.x+22,pacman.y+22);
 }
 
 void addDots(){
@@ -53,24 +67,6 @@ void addDots(){
 }
 
 void keyPressed(){
-  /*if(key == CODED){
-    if(keyCode == RIGHT && pacman.dx != 1){
-      pacman.dx = pacman.speed;
-      pacman.dy = 0;
-    }
-    if(keyCode == LEFT && pacman.dx != -1){
-      pacman.dx = -pacman.speed;
-      pacman.dy = 0;
-    }
-    if(keyCode == DOWN && pacman.dy != 1){
-      pacman.dy = pacman.speed;
-      pacman.dx = 0;
-    }
-    if(keyCode == UP && pacman.dy != -1){
-      pacman.dy = -pacman.speed;
-      pacman.dx = 0;
-    }
-  }*/
   String nextMove = ""; 
   if(key == CODED){
     if(keyCode == RIGHT){
@@ -81,13 +77,18 @@ void keyPressed(){
     }
     if(keyCode == UP){
       nextMove = "up";
+      println("up");
     }
     if(keyCode == DOWN){
       nextMove = "down";
     }
   }
+  else if(key == 'a'){
+      println("a pressed");
+  }
   pacman.setNextMove(nextMove);
-  println("nextmove = " + nextMove);
+  // pacman.move("up", )
+  // println("nextmove = " + nextMove);
 }
 
 void eatCheck(){  // Allows pacman to eat dots
@@ -101,5 +102,4 @@ void eatCheck(){  // Allows pacman to eat dots
       pacman.eating = false;
     }
   }
-
 }
