@@ -1,0 +1,32 @@
+Battlesim game design notes
+
+main function:
+	Role:  Create master class
+
+
+Classes:
+Class Master:
+	Role:  Create classes for entire game
+	Variables:
+		Classes for the game
+			Output
+			SetupPlayers
+			Warrior
+			
+Class Output:
+	Role:  Display static messages from beginning of game to end
+	Variables:
+	Methods:
+Class SetupPlayers
+	Role:  Setup attributes for warriors
+	Variables:
+	Methods:
+Class Warrior
+	Role:  Character in the game.  Has attributes for battling
+	Variables:
+	Methods:
+Class:
+	Role:
+	Variables:
+	Methods:
+

@@ -3,6 +3,13 @@ Create simple battle simulator that can be extended for a bigger game
 Simulator mechanics can be as simple as dice-based or 
 '''
 
+
+class Master():
+	def __init__(self):
+		pass
+	def play(self):
+		pass
+
 class Warrior():
 	def __init__(self, attack, defense, agility):
 		self.attack = attack
@@ -48,6 +55,9 @@ class SetupPlayers():	# Getting too big.  Split with WarriorSet class
 		print "Defense: ", self.computerWarrior.defense
 		print "Agility: ", self.computerWarrior.agility
 		print "\n"
+	def run(self):
+		askPlayer()
+		displayStats()
 
 class WarriorSet:
 	def __init__(self):
@@ -57,10 +67,13 @@ def simulateBattle():
 	print "***** !Battle Time! *****"
 
 def main():
+	battlesimulator = Master()
+	battlesimulator.play()
+
 	introMessage()
 	setupPlayers = SetupPlayers()
-	setupPlayers.askPlayer()
-	setupPlayers.displayStats()
+	setupPlayers.run()
+	
 	simulateBattle()
 	
 main()
