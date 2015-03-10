@@ -16,6 +16,5 @@ class Paddle{
   void calcForce(){
     forceY = mouseY - pmouseY;
     forceY = forceY * 0.1;
-    println("forceY = " + forceY);
   }
 }

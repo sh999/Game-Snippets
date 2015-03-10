@@ -12,16 +12,24 @@ class Ball{
     gravity = 0.5;
     damping = 30;
   }
-  void calcMove(){
+  private void calcMove(){
     // dy = 0.5;
     // dy = dy +  gravity;
     /*if(dy > maxSpeed){
       dy = maxSpeed;
     }*/
     y += dy;
-    dy = dy + 1;  //  Acceleration/gravity
-    println("dy = " + dy);
+    // dy = dy + 0.1;  //  Acceleration/gravity
   }
+  
+  float x(){
+    return this.x;
+  }
+  
+  float y(){
+    return this.y;
+  }
+
   void draw(){
     ellipse(x, y, diameter, diameter);
   }
