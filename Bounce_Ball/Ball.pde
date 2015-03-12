@@ -8,6 +8,7 @@ class Ball{
     this.y = y;
     diameter = 20;
     dy = 3;
+    dy = 0;
     maxSpeed = 6;
     gravity = 0.5;
     damping = 30;
@@ -19,7 +20,8 @@ class Ball{
       dy = maxSpeed;
     }*/
     y += dy;
-    // dy = dy + 0.1;  //  Acceleration/gravity
+    dy = dy + 0.5;  //  Acceleration/gravity
+    x += dx;
   }
   
   float x(){
