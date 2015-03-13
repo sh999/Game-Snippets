@@ -33,7 +33,7 @@ class Pacman{
   }
   
   void calcMove(){
-    if(x%50 <= 2){ 
+    if(x % 50 <= 2){ 
       x = width/2;
       if(nextMove == "up"){
         dx = 0;

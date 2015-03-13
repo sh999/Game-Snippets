@@ -16,9 +16,9 @@ class TileSet{
   }
   
   void colorTile(int x, int y, color c){
-    /*
-    x and y are tile coordinates to be colored
-    */
+    
+    //x and y are tile coordinates to be colored
+    
   }
 
   void update(){
