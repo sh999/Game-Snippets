@@ -5,19 +5,25 @@ class MouseEvent{
   MouseEvent(){
     tiles = new Tile[16];
     tiles = puzzleBox.getTiles();
-    
-    
   }
-  void moveTileIfPossible(){
-    float diffX, diffY; // Difference between mouseX,Y and tileX,Y
+
+  int findSelectedTile(){
+    float currentDistance, shortestDistance; // Difference between mouseX,Y and tileX,Y
+    int closestTileID = 0;
+    currentDistance = 0;
+    shortestDistance = 100000;
     for(int i = 0; i < tiles.length; i++){
-      diffX = mouseX-tiles[i].x;
-      diffY = mouseX-tiles[i].y;
-      print("i = "+i+"\n");
-      println("x - tile[i].x = "+(mouseX-tiles[i].x));
-      println("y - tile[i].y = "+(mouseY-tiles[i].y));
+      currentDistance = dist(mouseX, mouseY, tiles[i].x+shiftX, tiles[i].y+shiftY);
+      if(currentDistance < shortestDistance){
+        shortestDistance = currentDistance;
+        closestTileID = i;
+      }
+      println("i = "+i);
+      println("dist = "+currentDistance);
     }
-    
+    println("Shortest distance = " + shortestDistance);
+    println("Closest tile id = " + closestTileID);
+    return closestTileID;
     /*
     Get mouseClick position
     Iterate through each tile
