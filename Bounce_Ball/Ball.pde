@@ -3,6 +3,8 @@ class Ball{
   int diameter;
   float maxSpeed, gravity;
   float damping;
+  BallTrail ballTrail;
+
   Ball(float x, float y){
     this.x = x;
     this.y = y;
@@ -12,7 +14,10 @@ class Ball{
     maxSpeed = 6;
     gravity = 0.5;
     damping = 30;
+    ballTrail = new BallTrail(this.x, this.y);
+
   }
+
   private void calcMove(){
     dy = dy + 0.5;  //  Acceleration/gravity
     x += dx;
@@ -28,7 +33,13 @@ class Ball{
   }
 
   void draw(){
-    fill(240, 150, 90);
+    fill(260, 160, 20);
     ellipse(x, y, diameter, diameter);
+    drawTrail();
   }
+
+  void drawTrail(){
+    ballTrail.update(ball.x, ball.y);
+  }
+
 }

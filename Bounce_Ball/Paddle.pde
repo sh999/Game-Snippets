@@ -11,6 +11,7 @@ class Paddle{
   void draw(){
     y = mouseY;
     x = mouseX;
+    fill(220, 140 , 240);
     rect(x, y, w, h);
   }
   void calcForce(){
