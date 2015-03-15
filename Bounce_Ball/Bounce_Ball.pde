@@ -18,16 +18,22 @@ void setup(){
   ellipseMode(CENTER);
   noStroke();
   size(400, 1000);
-  background(0);
   paddle = new Paddle(width/2, 350);
   ball = new Ball(width/2, 10);
   collisionChecker = new CollisionChecker();
 }
+
 void draw(){
-  background(0);
+  background(0, 10, 50);
   ball.calcMove();
   paddle.calcForce();
   collisionChecker.calcCollision(ball, paddle);
   ball.draw();
   paddle.draw();
+}
+
+void mouseClicked(){
+  ball.x = width/2;
+  ball.y = 10;
+  ball.dy = 0;
 }

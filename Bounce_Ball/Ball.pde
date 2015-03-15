@@ -14,14 +14,9 @@ class Ball{
     damping = 30;
   }
   private void calcMove(){
-    // dy = 0.5;
-    // dy = dy +  gravity;
-    /*if(dy > maxSpeed){
-      dy = maxSpeed;
-    }*/
-    y += dy;
     dy = dy + 0.5;  //  Acceleration/gravity
     x += dx;
+    y += dy;
   }
   
   float x(){
@@ -33,6 +28,7 @@ class Ball{
   }
 
   void draw(){
+    fill(240, 150, 90);
     ellipse(x, y, diameter, diameter);
   }
 }
