@@ -1,0 +1,19 @@
+Battle begins between warrior1 and warrior2
+Determine who inflicts damage
+	Who gets to damage first depends on attack values
+	Every point difference either way grants a warrior 10% advantage in hitting first
+	Example:  
+		
+		warrior1.attack = 5
+		warrior2.attack = 5
+			No difference in attacks, so each warrior has a 50% chance to inflict damage
+		
+		warrior1.attack = 2
+		warrior2.attack = 4
+			warrior2 has 2 more attack points, so it has 50% + (10% * 2) = 70% of inflicting damage
+Determine damage
+	HP of character is by default 100
+	If warrior1 successfully attacks, subtract warrior1.strength - warrior2.defense
+	Use gaussian random number generator
+		Tentatively, -20 to +20 of strength - defense should be the minimum and maximum
+	If warrior2 is defending, warrior2 has a chance to evade the attack.  The higher its agility is vs warrior1, the higher chance of a miss.  Each difference = 10% chance of a miss

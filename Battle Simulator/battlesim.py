@@ -96,10 +96,10 @@ class Simulation():
 		self.warrior1 = warrior1
 		self.warrior2 = warrior2
 
-	def run(self, warrior1, warrior2):
+	def run(self):
 		print "***** !Battle Time! *****"
-		print warrior1
-		print warrior2
+		print self.warrior1
+		print self.warrior2
 
 def main():
 	battlesimulator = Master()
@@ -112,5 +112,11 @@ def main():
 	simulation = Simulation()
 	simulation.setWarriors(Warrior(1, 2, 3), Warrior(4, 5, 6))
 	simulation.run()
-	
-main()
+
+def miniSimulation():
+	simulation = Simulation()
+	simulation.setWarriors(Warrior(1, 2, 3), Warrior(4, 5, 6))
+	simulation.run()
+		
+# main()
+miniSimulation()
