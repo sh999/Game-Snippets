@@ -12,9 +12,6 @@ class Master():
 	def __init__(self):
 		pass
 	
-	def play(self):
-		self.introMessage()
-
 	def introMessage(self):
 		print "\n\n"
 		print "=================================="
@@ -22,12 +19,33 @@ class Master():
 		print "=================================="
 		print "\n"
 		print "You have 100 points to spend" # Implement later
+	
+	def displayStats(self, playerWarrior, computerWarrior):
+		print "\nYour warrior stats: "
+		print "Attack: ", playerWarrior.getAttack()
+		print "Defense: ", playerWarrior.getDefense()
+		print "Agility: ", playerWarrior.getAgility()
+		print "\n"
+		print "Opponent warrior stats: "
+		print "Attack: ", computerWarrior.getAttack()
+		print "Defense: ", computerWarrior.getDefense()
+		print "Agility: ", computerWarrior.getAgility()
+		print "\n"
 
 class Warrior():
 	def __init__(self, attack, defense, agility):
 		self.attack = attack
 		self.defense = defense
 		self.agility = agility
+
+	def getAttack(self):
+		return self.attack
+
+	def getDefense(self):
+		return self.defense
+
+	def getAgility(self):
+		return self.agility
 	
 class SetupPlayers():	
 	''' Getting too big.  Split with WarriorSet class.  
@@ -58,22 +76,6 @@ class SetupPlayers():
 	def getComputerWarrior(self):
 		return self.computerWarrior
 
-	def displayStats(self):
-		print "\nYour warrior stats: "
-		print "Attack: ", self.playerWarrior.attack
-		print "Defense: ", self.playerWarrior.defense
-		print "Agility: ", self.playerWarrior.agility
-		print "\n"
-		print "Opponent warrior stats: "
-		print "Attack: ", self.computerWarrior.attack
-		print "Defense: ", self.computerWarrior.defense
-		print "Agility: ", self.computerWarrior.agility
-		print "\n"
-
-	def run(self):
-		self.askPlayer()
-		self.displayStats()
-
 class WarriorSet:
 	'''
 	Holds player and computer warriors
@@ -87,27 +89,28 @@ class WarriorSet:
 		print self.warrior2
 
 class Simulation():
-	def __init__(self, warrior1, warrior2):
+	def __init__(self):
+		pass
+
+	def setWarriors(self, warrior1, warrior2):
 		self.warrior1 = warrior1
 		self.warrior2 = warrior2
 
 	def run(self, warrior1, warrior2):
+		print "***** !Battle Time! *****"
 		print warrior1
 		print warrior2
 
-def simulateBattle():
-	print "***** !Battle Time! *****"
-
 def main():
 	battlesimulator = Master()
-	battlesimulator.play()	# Currently displays only intro message
-
+	battlesimulator.introMessage()
 	setupPlayers = SetupPlayers()
-	setupPlayers.run()
-
+	setupPlayers.askPlayer()
+	battlesimulator.displayStats(Warrior(1, 2, 3), Warrior(4, 5, 6))
 	warriorSet = WarriorSet(Warrior(1, 2, 3), Warrior(4, 5, 6))
 	warriorSet.printWarriors()
-	# simulation = Simulation()
-	# simulation.run()
+	simulation = Simulation()
+	simulation.setWarriors(Warrior(1, 2, 3), Warrior(4, 5, 6))
+	simulation.run()
 	
 main()
