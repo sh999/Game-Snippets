@@ -6,7 +6,6 @@ class CollisionChecker {
 	void calcCollision(Ball b, Paddle p){
 	  // Check if ball hits paddle
 	  if(ball.y > height){
-      print("Game over");
       gameOver();
     }
     else if(ball.y+ball.diameter/2 > paddle.y-paddle.h/2
@@ -15,9 +14,7 @@ class CollisionChecker {
   		reverseYDirection();
   		ball.y = paddle.y-paddle.h/2-ball.diameter/2;  // Ensures ball isn't inside paddle when bouncing
 	  	ball.dx = (ball.x - paddle.x)/10; // Change sideways angle of bounce
-  		println("ForceY = " + paddle.forceY);
   		ball.dy = ball.dy + (ball.dy * paddle.forceY);
-      print("hey");	  
 	  }
 	  if(ball.y < 0){ // Bounce when hitting top
    		ball.y = ball.diameter/2;
@@ -40,7 +37,8 @@ class CollisionChecker {
   }
 
   void dampen(){
-  	ball.dy = ball.dy * 0.75; // Dampening
+    float dampening = 0.50;
+  	ball.dy = ball.dy * dampening; // Each bounce reduces ball velocity
   }  
 
   void reverseYDirection(){

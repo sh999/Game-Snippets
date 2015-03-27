@@ -17,6 +17,10 @@ class Paddle{
   void calcForce(){
     forceY = pmouseY - mouseY;
     forceY = forceY * 0.1;
-    // println("ForceY = " + forceY);
+    float maxAllowedForce = 1.2;
+    if(forceY > maxAllowedForce){
+      forceY = maxAllowedForce;
+    }
+    println("ForceY = " + forceY);
   }
 }

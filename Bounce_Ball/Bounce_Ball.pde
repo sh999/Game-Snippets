@@ -27,7 +27,7 @@ void setup(){
 }
 
 void draw(){
-  print(game.state());
+  // print(game.state());
   if(game.state() == "Playing"){
     background(0, 10, 50);
     ball.calcMove();
@@ -37,7 +37,6 @@ void draw(){
     paddle.draw();
   }
   if(game.state() == "Game over"){
-    print("game over");
     textSize(30);
     text("Game Over!", width/2, height/2);
   }
