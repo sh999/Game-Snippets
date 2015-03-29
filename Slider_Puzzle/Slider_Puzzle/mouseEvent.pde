@@ -7,7 +7,7 @@ class MouseEvent{
     tiles = puzzleBox.getTiles();
   }
 
-  int findSelectedTile(){
+  int findSelectedTile(){ // On user click, detect which tile has been clicked
     float currentDistance, shortestDistance; // Difference between mouseX,Y and tileX,Y
     int closestTileID = 0;
     currentDistance = 0;
@@ -24,10 +24,5 @@ class MouseEvent{
     println("Shortest distance = " + shortestDistance);
     println("Closest tile id = " + closestTileID);
     return closestTileID;
-    /*
-    Get mouseClick position
-    Iterate through each tile
-    Check if mouseClick is inside each tile
-    */
   }
 }

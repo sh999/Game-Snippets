@@ -10,12 +10,16 @@ class Tile{ // Individual tile object.  Contains drawing method for a given tile
     size = 50;
     col = color(255,244,3);
   }
-  void adraw(){
+  void draw(){
     if(num != 16){
       fill(255);
       rect(x, y, size, size);
       fill(255,0,0);
       text(num, x, y);
     }
+  }
+
+  void moveTile(){
+    x = x + 30;
   }
 }

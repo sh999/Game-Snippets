@@ -26,8 +26,14 @@ void setup(){
 void draw(){
   background(0);
   puzzleBox.draw();
+  /*
+  Move tile if possible
+  */
 }
 
 void mouseReleased(){
   selecteDTileID = mouseEvent.findSelectedTile();
+  puzzleBox.moveTile(14);
 }
+
+
