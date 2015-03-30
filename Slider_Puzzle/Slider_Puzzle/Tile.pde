@@ -1,25 +1,31 @@
 class Tile{ // Individual tile object.  Contains drawing method for a given tile
   float x, y;
   float size;
-  float col;
+  color boxColor;
+  color numColor;
   int num;
+  
   Tile(float x, float y, int num){
     this.x = x;
     this.y = y;
     this.num = num;
     size = 50;
-    col = color(255,244,3);
+    boxColor = color(255,244,3);
+    numColor = color(255,0,0);
   }
   void draw(){
-    if(num != 16){
-      fill(255);
-      rect(x, y, size, size);
-      fill(255,0,0);
-      text(num, x, y);
-    }
+    fill(boxColor);
+    rect(x, y, size, size);
+    fill(numColor);
+    text(num, x, y);
   }
 
   void moveTile(){
     x = x + 30;
+  }
+
+  void setColor(color boxColor, color numColor){
+    this.boxColor = boxColor;
+    this.numColor = numColor;
   }
 }
