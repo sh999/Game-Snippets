@@ -29,7 +29,18 @@ void draw(){
 }
 
 void mouseReleased(){
-  selecteDTileID = mouseEvent.findSelectedTile();
+  selecteDTileID = mouseEvent.findSelectedTile(mouseX, mouseY);
+  int spacing = puzzleBox.spacing();
+  int toRightID, toLeftID, belowID, aboveID;
+  toRightID = mouseEvent.findSelectedTile(mouseX + spacing, mouseY);
+  toLeftID = mouseEvent.findSelectedTile(mouseX - spacing, mouseY);
+  belowID = mouseEvent.findSelectedTile(mouseX, mouseY + spacing);
+  aboveID = mouseEvent.findSelectedTile(mouseX, mouseY - spacing);
+  println("selected id = " + selecteDTileID);
+  println("to right id = " + toRightID);
+  println("to left id = " + toLeftID);
+  println("below id = " + belowID);
+  println("above id = " + aboveID);
   puzzleBox.swapTiles(selecteDTileID, 15);
 }
 

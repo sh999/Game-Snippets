@@ -2,7 +2,7 @@ class PuzzleBox {
   Tile[] tiles;
   int rowAmt = 4; // # of tiles per row
   int emptyPosition = 15;
-  int spacing = 60;
+  int spacing = 55;
 
   PuzzleBox() {
     tiles = new Tile[16];
@@ -35,8 +35,14 @@ class PuzzleBox {
     }
   }
 
+  int spacing(){
+    return spacing;
+  }
+
   boolean areAdjacent(Tile a, Tile b){
-    return false;
+    boolean areAdjacent = false;
+    // areAdjacent = true;
+    return areAdjacent;
   }
 }
 
