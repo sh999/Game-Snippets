@@ -10,7 +10,7 @@ MouseEvent mouseEvent;
 PuzzleBox puzzleBox;
 PFont font;
 int selecteDTileID;
-int shiftX, shiftY;
+int shiftX, shiftY; // Shift the entire puzzle field
 void setup(){
   textAlign(CENTER);
   rectMode(CENTER);
