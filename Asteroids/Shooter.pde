@@ -24,9 +24,10 @@ class Shooter{
     dx = speed * -sin(direction+PI);
 //    dy = speed * cos(PI);
 //    dx = speed * -sin(PI);
+    /*
     println("angle = "+degrees(angle));
     println("dy = "+dy);
-    println("dir = "+direction);
+    println("dir = "+direction);*/
     x = x + dx;
     y = y + dy;
     if(x > width){
@@ -48,6 +49,7 @@ class Shooter{
   } 
   
   void thrust(){ //Thrust
+    println("thrusting");
     if(speed == 0){
       speed = 1;
     }

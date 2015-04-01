@@ -17,22 +17,23 @@ void setup(){
 
 void draw(){
   background(0);
-    rock.drawRock();
+  rock.drawRock();
 
   p1.update();
   ellipse(width/2,height/2,33,33);
-   beginShape();
-   vertex(200,200);
-    vertex(10,0);
-    vertex(10,20);
-    vertex(3,4);
-    endShape(CLOSE);
+  beginShape();
+  vertex(200,200);
+  vertex(10,0);
+  vertex(10,20);
+  vertex(3,4);
+  endShape(CLOSE);
 }
 
 void keyPressed(){
   if(key == CODED){
     if(keyCode == UP){
-      p1.thrust(); //updates speed
+      p1.setThrustOn(); //updates speed
+      // print("thrussssst");
     }
     if(keyCode == LEFT){
       p1.dAngle = -p1.rotSpeed;
