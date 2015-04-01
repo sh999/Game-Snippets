@@ -30,10 +30,11 @@ class Shooter{
     rotate(angle);
     triangle(0,-10,7,20,-7,20);
     adjustSpeed();
-    println("speed = "+ speed + "\tdx = " + dx + "\tdy = " + dy + "\tdirection = " + moveDirection);
+    println("speed = "+ speed + "\tdx = " + dx + "\tdy = " + dy + "\tdirection = " + moveDirection + "\tangle = " + angle);
   } 
   
   void move(){
+    if(thrustOn == true) moveDirection = angle;
     dy = speed * cos(moveDirection+PI);
     dx = speed * -sin(moveDirection+PI);
     x = x + dx;
@@ -78,10 +79,10 @@ class Shooter{
     // println("thrusting");
     if (thrustOn == true) {
       if(speed == 0){
-        speed = 0.2;
+        speed = 0.3;
       }
       else{
-        speed = speed * 2;
+        speed = speed * 1.1;
       }
       if(speed >= maxSpeed){
         speed = maxSpeed;
