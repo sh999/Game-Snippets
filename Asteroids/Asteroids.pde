@@ -36,19 +36,22 @@ void keyPressed(){
       // print("thrussssst");
     }
     if(keyCode == LEFT){
-      p1.dAngle = -p1.rotSpeed;
+      p1.rotateLeft();
+      
     }
     else if(keyCode == RIGHT){
-      p1.dAngle = p1.rotSpeed ;
+      p1.rotateRight();
     }
   }
 }
 
 void keyReleased(){
-  p1.dAngle = 0;
+  p1.stopRotation();
+  
   if(key == CODED){
     if(keyCode == UP){
-      p1.direction = p1.angle;
+      // p1.moveDirection = p1.angle;
+      p1.setThrustOff();
     }
   }
 }

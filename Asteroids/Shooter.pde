@@ -2,13 +2,15 @@ class Shooter{
   float x, y;
   float dx, dy;
   float speed, maxSpeed;
-  float angle, direction;
+  float angle, moveDirection;
   float dAngle;
   float rotSpeed;
+  boolean thrustOn;
   
   Shooter(float x, float y){
     this.x = x;
     this.y = y;
+    this.thrustOn = false;
     dx = 0;
     dy = 0;
     speed = 0;
@@ -16,20 +18,48 @@ class Shooter{
     angle = PI/2;
     dAngle = 0;
     rotSpeed = 0.075;
-    direction = angle;
+    moveDirection = angle;
   }
   
   void update(){
-    dy = speed * cos(direction+PI);
-    dx = speed * -sin(direction+PI);
-//    dy = speed * cos(PI);
-//    dx = speed * -sin(PI);
-    /*
-    println("angle = "+degrees(angle));
-    println("dy = "+dy);
-    println("dir = "+direction);*/
+    move();
+    screenWrap();
+    angle = angle + dAngle;
+    // moveDirection = angle;
+    translate(x, y);
+    rotate(angle);
+    triangle(0,-10,7,20,-7,20);
+    adjustSpeed();
+    println("speed = "+ speed + "\tdx = " + dx + "\tdy = " + dy + "\tdirection = " + moveDirection);
+  } 
+  
+  void move(){
+    dy = speed * cos(moveDirection+PI);
+    dx = speed * -sin(moveDirection+PI);
     x = x + dx;
     y = y + dy;
+  }
+  void rotateLeft(){
+    p1.dAngle = -p1.rotSpeed;
+  }
+
+  void rotateRight(){
+    p1.dAngle = p1.rotSpeed ;
+  }
+
+  void stopRotation(){
+    p1.dAngle = 0;
+  }
+
+  void setThrustOn(){
+    thrustOn = true;
+  }
+  
+  void setThrustOff(){
+    thrustOn = false;
+  }
+
+  void screenWrap(){
     if(x > width){
       x = width - x;
     }
@@ -42,22 +72,20 @@ class Shooter{
     else if(y < 0){
       y = height - y;
     }
-    angle = angle + dAngle;
-    translate(x, y);
-    rotate(angle);
-    triangle(0,-10,7,20,-7,20);
-  } 
-  
-  void thrust(){ //Thrust
-    println("thrusting");
-    if(speed == 0){
-      speed = 1;
-    }
-    else{
-      speed = speed * 2;
-    }
-    if(speed >= maxSpeed){
-      speed = maxSpeed;
+  }
+
+  void adjustSpeed(){ //Thrust
+    // println("thrusting");
+    if (thrustOn == true) {
+      if(speed == 0){
+        speed = 0.2;
+      }
+      else{
+        speed = speed * 2;
+      }
+      if(speed >= maxSpeed){
+        speed = maxSpeed;
+      }
     }
   }  
 }
