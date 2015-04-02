@@ -9,10 +9,7 @@ class Rock{
   }
   
   void drawRock(){
-    
-    
     fill(222,22,0);    
-//    ellipse(x, y, 22, 22);
     rock.beginShape();
     vertex(200,200);
     vertex(10,0);
