@@ -4,18 +4,29 @@ class Rock{
   Rock(int x, int y){
     fill(200);
     rock = createShape();
+    setShape();
     this.x = x;
     this.y = y;
   }
-  
-  void drawRock(){
-    fill(222,22,0);    
+
+  void setShape(){
     rock.beginShape();
-    vertex(200,200);
-    vertex(10,0);
-    vertex(10,20);
-    vertex(3,4);
-    rock.endShape(CLOSE);
+    rock.vertex(0,0);
+    rock.vertex(20,0);
+    rock.vertex(40,-10);
+    rock.vertex(60,5);
+    rock.vertex(70,20);
+    rock.vertex(55,40);
+    rock.vertex(24,50);
+    rock.vertex(-10,44);
+    rock.vertex(-5,12);
+    rock.endShape();
+  }
+  
+  void draw(){
+    fill(222,22,0);  
+    ellipse(width/2, 33, 33, 33);  
+    shape(rock, 66, 66);
   }
   
   void moveRock(){

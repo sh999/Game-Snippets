@@ -12,14 +12,14 @@ void setup(){
   background(0);
   noStroke();
   p1 = new Shooter(width/2, height/2);
-  rock = new Rock(width/2, height/2);
+  rock = new Rock(55, height/2);
 }
 
 void draw(){
   background(0);
-  rock.drawRock();
+  rock.draw();
   p1.update();
-  ellipse(width/2,height/2,33,33);
+  ellipse(111,height/2,33,33);
 }
 
 void keyPressed(){
@@ -29,17 +29,19 @@ void keyPressed(){
     }
     if(keyCode == LEFT){
       p1.rotateLeft();
-      
     }
     else if(keyCode == RIGHT){
       p1.rotateRight();
     }
   }
+  else if(key == ' '){
+    println("space pressed");
+    p1.shoot();
+  }
 }
 
 void keyReleased(){
   p1.stopRotation();
-  
   if(key == CODED){
     if(keyCode == UP){
       p1.setThrustOff();
