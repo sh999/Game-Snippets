@@ -1,7 +1,7 @@
 class Rock{
   PShape rock;
-  int x, y;
-  Rock(int x, int y){
+  float x, y;
+  Rock(float x, float y){
     fill(200);
     rock = createShape();
     setShape();
@@ -25,8 +25,7 @@ class Rock{
   
   void draw(){
     fill(222,22,0);  
-    ellipse(width/2, 33, 33, 33);  
-    shape(rock, 66, 66);
+    shape(rock, x, y);
   }
   
   void moveRock(){

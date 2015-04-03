@@ -1,30 +1,28 @@
-/*Asteroids clone
-
-Tasks:
-Allow ship to turn while thrust is on
-Bugs:
-initial thrust causes ship to turn sideways
+/*
+Asteroids clone
 */
 Shooter p1;
-Rock rock;
-// Bullet bullet;
+int rockNum;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+ArrayList<Rock> rocks = new ArrayList<Rock>();
 float bulletAngle;
 void setup(){
   size(800,800,P2D);
   background(0);
   noStroke();
   p1 = new Shooter(width/2, height/2);
-  rock = new Rock(55, height/2);
-  bullets.add(new Bullet(width/2, height/2, 0));
-  // bullet = new Bullet(width/2, height/2, 0);
-  // bullet.setDirection(p1.angle()-PI/2); // See if bullet can follow mouse
+  rockNum = 10;
+  for(int i = 0; i < rockNum; i++){
+    rocks.add(new Rock(random(0, width), random(0, height)));
+  }
 }
 
 void draw(){
   background(0);
-  rock.draw();
   p1.update();
+  for(Rock r: rocks){
+    r.draw();
+  }
   for(int i = bullets.size()-1; i >= 0; i--){
     Bullet b = bullets.get(i);
     b.update();
@@ -32,7 +30,7 @@ void draw(){
       bullets.remove(i);
     }
   }
-  ellipse(111,height/2,33,33);
+
 }
 
 void keyPressed(){

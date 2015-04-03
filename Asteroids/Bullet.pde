@@ -12,11 +12,17 @@ class Bullet{
 		this.y = y;
 		speed = 5;
 		diameter = 5;
-		lifetime = 50;
+		lifetime = 75;
 		dead = false;
 	}
 
 	void update(){
+		drawBullet();
+		move();
+		decay();
+	}
+
+	void drawBullet(){
 		stroke(250);
 		pushMatrix(); 	// Testing line vector drawing
 		translate(width/2,height/2);
@@ -26,9 +32,14 @@ class Bullet{
 		popMatrix();	// End test
 		noStroke();
 		ellipse(x, y, diameter, diameter);
-		println("bullet direction = " + direction.mag());
+	}
+
+	void move(){
 		x += direction.x;
 		y += direction.y;
+	}
+
+	void decay(){
 		lifetime -= 1;
 		if(lifetime < 0){
 			dead = true;
