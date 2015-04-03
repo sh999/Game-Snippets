@@ -60,7 +60,6 @@ class Shooter{
     dx = dx + thrustX;
     dy = dy + thrustY;
     currentSpeed = sqrt(dx * dx + dy * dy);
-    println("current speed = " + currentSpeed);
     if(currentSpeed > maxSpeed){  // Ensures thrust has no effect if max speed is reached by negating movement calculation
       dx = dx - thrustX;
       dy = dy - thrustY;
@@ -86,6 +85,10 @@ class Shooter{
   void setThrustOff(){
     thrustOn = false;
     thrustPower = 0;
+  }
+
+  float angle(){
+    return angle;
   }
 
   void screenWrap(){

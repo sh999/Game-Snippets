@@ -7,18 +7,22 @@ initial thrust causes ship to turn sideways
 */
 Shooter p1;
 Rock rock;
+Bullet bullet;
 void setup(){
   size(800,800,P2D);
   background(0);
   noStroke();
   p1 = new Shooter(width/2, height/2);
   rock = new Rock(55, height/2);
+  bullet = new Bullet(width/2, height/2, 0);
+  bullet.setDirection(p1.angle()-PI/2); // See if bullet can follow mouse
 }
 
 void draw(){
   background(0);
   rock.draw();
   p1.update();
+  bullet.update();
   ellipse(111,height/2,33,33);
 }
 
@@ -35,7 +39,6 @@ void keyPressed(){
     }
   }
   else if(key == ' '){
-    println("space pressed");
     p1.shoot();
   }
 }
