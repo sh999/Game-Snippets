@@ -91,6 +91,14 @@ class Shooter{
     return angle;
   }
 
+  float x(){
+    return x;
+  }
+
+  float y(){
+    return y;
+  }
+  
   void screenWrap(){
     if(x > width){
       x = width - x;
