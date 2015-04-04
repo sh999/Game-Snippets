@@ -5,6 +5,8 @@ http://en.wikipedia.org/wiki/Sliding_puzzle
 11/4/14: Implement moving tile to empty space
   Check what tile was clicked. Done (3/14/15)
   Shift the clicked tile to empty space
+todo:
+randomize tiles
 */
 MouseEvent mouseEvent;
 PuzzleBox puzzleBox;
@@ -21,6 +23,7 @@ void setup(){
   mouseEvent = new MouseEvent();
   shiftX = 40;
   shiftY = 40;
+  puzzleBox.randomize();
 }
 
 void draw(){
@@ -41,7 +44,18 @@ void mouseReleased(){
   println("to left id = " + toLeftID);
   println("below id = " + belowID);
   println("above id = " + aboveID);
-  puzzleBox.swapTiles(selecteDTileID, 15);
+  if(toRightID == puzzleBox.emptyPosition() ||
+     toLeftID == puzzleBox.emptyPosition() ||
+     belowID == puzzleBox.emptyPosition() ||
+     aboveID == puzzleBox.emptyPosition()){ // Only swap tiles if the selected tile is next to an empty one
+    puzzleBox.swapTiles(selecteDTileID, puzzleBox.emptyPosition());
+  }
+}
+
+void keyPressed(){
+  if(key == 'r'){
+    puzzleBox.randomize();
+  }
 }
 
 
