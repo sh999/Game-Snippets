@@ -21,7 +21,7 @@ void draw(){
   background(0);
   p1.update();
   for(Rock r: rocks){
-    r.draw();
+    r.update();
   }
   for(int i = bullets.size()-1; i >= 0; i--){
     Bullet b = bullets.get(i);

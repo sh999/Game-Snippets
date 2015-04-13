@@ -38,6 +38,7 @@ class Shooter{
   } 
 
   void drawShip(){
+    fill(255);
     triangle(0,-10,7,20,-7,20);
   }
   

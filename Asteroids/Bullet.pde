@@ -23,6 +23,7 @@ class Bullet{
 	}
 
 	void drawBullet(){
+		fill(255,255,0);
 		stroke(250);
 		pushMatrix(); 	// Testing line vector drawing
 		translate(width/2,height/2);
