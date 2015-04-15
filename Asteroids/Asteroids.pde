@@ -11,7 +11,7 @@ void setup(){
   background(0);
   noStroke();
   p1 = new Shooter(width/2, height/2);
-  rockNum = 10;
+  rockNum = 1;
   for(int i = 0; i < rockNum; i++){
     rocks.add(new Rock(random(0, width), random(0, height)));
   }
@@ -26,11 +26,35 @@ void draw(){
   for(int i = bullets.size()-1; i >= 0; i--){
     Bullet b = bullets.get(i);
     b.update();
+    for(Rock r: rocks){
+      checkCircleCollision(b, r);
+    }
     if(b.dead() == true){
       bullets.remove(i);
     }
   }
 
+}
+
+void checkCircleCollision(Bullet b, Rock r){
+  float bDiameter, rDiameter;
+  bDiameter = b.getDiameter();
+  rDiameter = r.getDiameter();
+  PVector bPosition = b.getPosition();
+  PVector rPosition = r.getPosition();
+  float rbDistance = dist(bPosition.x, bPosition.y, rPosition.x, rPosition.y);
+  if(rbDistance < rDiameter){
+    destroyBullet(b);
+    destroyRock(r);
+  }
+}
+
+void destroyBullet(){
+
+}
+
+void destroyRock(){
+  
 }
 
 void keyPressed(){

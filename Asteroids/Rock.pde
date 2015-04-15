@@ -32,6 +32,7 @@ class Rock{
   void update(){
     draw();
     moveRock();
+    screenWrap();
   }
 
   void draw(){
@@ -43,6 +44,30 @@ class Rock{
   void moveRock(){
     x += direction.x;
     y += direction.y;
+  }
+
+  void screenWrap(){
+    if(x > width){
+      x = width - x;
+    }
+    else if(x < 0){
+      x = width + x;
+    }
+    if(y > height){
+      y = y - height;
+    }
+    else if(y < 0){
+      y = height - y;
+    }
+  }
+
+  float getDiameter(){
+    return diameter;
+  }
+
+  PVector getPosition(){
+    PVector position = new PVector(x, y);
+    return position;
   }
   
 }

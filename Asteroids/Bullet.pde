@@ -29,7 +29,7 @@ class Bullet{
 		translate(width/2,height/2);
 		direction.normalize();
 		direction.setMag(4);
-		line(0,0,direction.x,direction.y); 
+		// line(0,0,direction.x,direction.y); 
 		popMatrix();	// End test
 		noStroke();
 		ellipse(x, y, diameter, diameter);
@@ -53,6 +53,15 @@ class Bullet{
 
 	boolean dead(){
 		return dead;
+	}
+
+	float getDiameter(){
+	    return diameter;
+	}
+
+	PVector getPosition(){
+	    PVector position = new PVector(x, y);
+	    return position;
 	}
 
 }
