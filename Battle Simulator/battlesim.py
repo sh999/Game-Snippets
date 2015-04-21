@@ -38,6 +38,7 @@ class Warrior():
 		self.attack = attack
 		self.defense = defense
 		self.agility = agility
+		self.health = 30
 
 	def getAttack(self):
 		return self.attack
@@ -47,6 +48,18 @@ class Warrior():
 
 	def getAgility(self):
 		return self.agility
+
+	def setName(self, name):
+		self.name = name
+
+	def getName(self):
+		return self.name
+
+	def getHealth(self):
+		return self.health
+
+	def reduceHealth(self,points):
+		self.health -= points
 	
 class SetupPlayers():	
 	''' Getting too big.  Split with WarriorSet class.  
@@ -134,14 +147,25 @@ def determineAttacker(warrior1, warrior2):
 	die1 = Die(warrior1.getAgility())
 	die2 = Die(warrior2.getAgility())
 	diff = die1.getValue() - die2.getValue()
+
 	while diff == 0:
 		die1.roll()
 		die2.roll()
 		diff = die1.getValue() - die2.getValue()
 	if diff > 0:
-		print "player 1 attacks"
+		print warrior1.getName(), "attacks"
+		attacker = warrior1
 	elif diff < 0:
-		print "player 2 attacks"
+		print warrior2.getName(), "attacks"
+		attacker = warrior2
+	return attacker
+
+def determineDefender(attacker,warrior1,warrior2):
+	if attacker == warrior1:
+		defender = warrior2
+	else:
+		defender = warrior1
+	return defender
 
 def main():
 	battlesimulator = Master()
@@ -163,24 +187,41 @@ def miniSimulation():
 def dieTest():
 	damageCalculator(6, 6)
 
+def printCondition(warrior):
+	print warrior.getName(), "HP =", warrior.getHealth()
+
 def battleWithDice():
 	'''
-	Simulate battle with simple die mechanism
+	Simulate damage with simple die mechanism
 	'''
-	myWarrior = Warrior(6, 5, 0)
-	compWarrior = Warrior(9, 2, 0)
-	damageCalculator(myWarrior.getAttack(), compWarrior.getAttack())
+	myWarrior = Warrior(8, 2, 10)
+	compWarrior = Warrior(9, 2, 9)
+	myWarrior.setName("Bob");
+	compWarrior.setName("Alice");
+	divider = "-" * 10
+	while myWarrior.getHealth() > 0 and compWarrior.getHealth() > 0:
+		print divider
+		printCondition(myWarrior)
+		printCondition(compWarrior)
+		attacker = determineAttacker(myWarrior, compWarrior)
+		defender = determineDefender(attacker, myWarrior, compWarrior)
+		damage = damageCalculator(attacker.getAttack(), defender.getAttack())
+		defender.reduceHealth(damage)
+	if myWarrior.getHealth() <= 0:
+		print myWarrior.getName(), "is dead!"
+	else:
+		print compWarrior.getName(), "is dead!"
 
 def testAgility():
 	'''
 	Simulate who attacks first depending on agility value
 	'''
-	myWarrior = Warrior(9, 3, 4)
-	compWarrior = Warrior(3, 3, 9)
+	myWarrior = Warrior(5, 4, 11)
+	compWarrior = Warrior(5, 4, 11)
 	determineAttacker(myWarrior, compWarrior)
 
-testAgility()
-# battleWithDice()
+# testAgility()
+battleWithDice()
 # dieTest()
 # main()
 # miniSimulation()
