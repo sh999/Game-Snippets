@@ -3,6 +3,7 @@ Create simple battle simulator that can be extended for a bigger game
 Simulator mechanics can be as simple as dice-based or 
 '''
 
+import random
 
 class Master():
 	'''
@@ -101,6 +102,47 @@ class Simulation():
 		print self.warrior1
 		print self.warrior2
 
+class Die:
+	def __init__(self, maxNumber):
+		self.maxNumber = maxNumber
+		self.roll()
+
+	def roll(self):
+		self.rollNumber = random.randint(1, self.maxNumber)
+
+	def getValue(self):
+		return self.rollNumber
+
+def damageCalculator(dieMax1, dieMax2):
+	'''
+	Uses Die objects to calculate damage
+	'''
+	die1 = Die(dieMax1)
+	die1.getValue()
+	die2 = Die(dieMax2)
+	die2.getValue()
+	damage = die1.getValue() - die2.getValue()
+	if damage < 0: # Disallows negative damage
+		damage = 0
+	print "damage = ", damage
+	return damage
+
+def determineAttacker(warrior1, warrior2):
+	'''
+	Whoever has the higher agility roll attacks first
+	'''
+	die1 = Die(warrior1.getAgility())
+	die2 = Die(warrior2.getAgility())
+	diff = die1.getValue() - die2.getValue()
+	while diff == 0:
+		die1.roll()
+		die2.roll()
+		diff = die1.getValue() - die2.getValue()
+	if diff > 0:
+		print "player 1 attacks"
+	elif diff < 0:
+		print "player 2 attacks"
+
 def main():
 	battlesimulator = Master()
 	battlesimulator.introMessage()
@@ -117,6 +159,28 @@ def miniSimulation():
 	simulation = Simulation()
 	simulation.setWarriors(Warrior(1, 2, 3), Warrior(4, 5, 6))
 	simulation.run()
-		
+
+def dieTest():
+	damageCalculator(6, 6)
+
+def battleWithDice():
+	'''
+	Simulate battle with simple die mechanism
+	'''
+	myWarrior = Warrior(6, 5, 0)
+	compWarrior = Warrior(9, 2, 0)
+	damageCalculator(myWarrior.getAttack(), compWarrior.getAttack())
+
+def testAgility():
+	'''
+	Simulate who attacks first depending on agility value
+	'''
+	myWarrior = Warrior(9, 3, 4)
+	compWarrior = Warrior(3, 3, 9)
+	determineAttacker(myWarrior, compWarrior)
+
+testAgility()
+# battleWithDice()
+# dieTest()
 # main()
-miniSimulation()
+# miniSimulation()

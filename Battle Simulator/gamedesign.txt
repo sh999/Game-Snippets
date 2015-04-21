@@ -1,5 +1,7 @@
 Battlesim game design notes
 
+
+===Design version 1:
 main function:
 	Role:  Create master class
 
@@ -29,4 +31,21 @@ Class:
 	Role:
 	Variables:
 	Methods:
+
+===Design version 2:
+Specification:
+Battle Simulator lets the user create a warrior and fight it 
+against a computer-controlled warrior.  Each warrior has basic
+attributes such as Attack, Defense, and Agility.  In the pre-battle
+phase, the user inputs the values for each attribute.  The values 
+can't exceed a given maximum number when summed.  After this, the 
+player warrior can battle the computer warrior.  
+
+Subsystems:
+Classes:
+Warrior
+
+Comments:
+Do a simple dice roll and sum based battle system
+
 
