@@ -190,15 +190,40 @@ def dieTest():
 def printCondition(warrior):
 	print warrior.getName(), "HP =", warrior.getHealth()
 
+class BattleStats:
+	def __init__(self, warrior1, warrior2):
+		self.warrior1 = warrior1
+		self.warrior2 = warrior2
+		self.totalRounds = 0
+		self.warrior1health = [warrior1.getHealth()]
+		self.warrior2health = [warrior2.getHealth()]
+	def addRounds(self):
+		self.totalRounds += 1
+	def getRounds(self):
+		return self.totalRounds
+	def setWinner(self, warrior):
+		self.winner = warrior
+	def getWinner(self):
+		return self.winner.getName()
+	def recordDamage(self, w1Health, w2Health):
+		self.warrior1health.append(w1Health)
+		self.warrior2health.append(w2Health)
+	def getHistory(self, warrior):
+		if warrior == self.warrior1:
+			return self.warrior1health
+		else:
+			return self.warrior2health
+
 def battleWithDice():
 	'''
 	Simulate damage with simple die mechanism
 	'''
-	myWarrior = Warrior(8, 2, 10)
+	myWarrior = Warrior(10, 2, 10)
 	compWarrior = Warrior(9, 2, 9)
 	myWarrior.setName("Bob");
 	compWarrior.setName("Alice");
 	divider = "-" * 10
+	battleStats = BattleStats(myWarrior, compWarrior)
 	while myWarrior.getHealth() > 0 and compWarrior.getHealth() > 0:
 		print divider
 		printCondition(myWarrior)
@@ -207,10 +232,21 @@ def battleWithDice():
 		defender = determineDefender(attacker, myWarrior, compWarrior)
 		damage = damageCalculator(attacker.getAttack(), defender.getAttack())
 		defender.reduceHealth(damage)
+		battleStats.addRounds()
+		battleStats.recordDamage(myWarrior.getHealth(), compWarrior.getHealth())
 	if myWarrior.getHealth() <= 0:
 		print myWarrior.getName(), "is dead!"
+		battleStats.setWinner(compWarrior)
 	else:
 		print compWarrior.getName(), "is dead!"
+		battleStats.setWinner(myWarrior)
+	print divider
+	print "Battle stats:"
+	print "Winner = ", battleStats.getWinner()
+	print "Total rounds = ", battleStats.getRounds()
+	print "HP history = "
+	print myWarrior.getName(), " = ", battleStats.getHistory(myWarrior)
+	print compWarrior.getName(), " = ", battleStats.getHistory(compWarrior)
 
 def testAgility():
 	'''
