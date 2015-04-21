@@ -4,16 +4,20 @@ class Bullet{
 	float speed, diameter;
 	float lifetime;
 	boolean dead;
+	color bulletColor;
+	boolean destroyThis;
 	Bullet(float x, float y, float angle){
 		direction = new PVector();
 		direction = PVector.fromAngle(angle);
 		direction.normalize();
 		this.x = x;
 		this.y = y;
-		speed = 5;
+		speed = 1;
 		diameter = 5;
 		lifetime = 75;
 		dead = false;
+		bulletColor = color(255,255,0);
+		destroyThis = false;
 	}
 
 	void update(){
@@ -22,8 +26,13 @@ class Bullet{
 		decay();
 	}
 
+	void destroy(){
+		print("hit");
+		bulletColor = color(255,0,0);
+		dead = true;
+	}
 	void drawBullet(){
-		fill(255,255,0);
+		fill(bulletColor);
 		stroke(250);
 		pushMatrix(); 	// Testing line vector drawing
 		translate(width/2,height/2);
@@ -38,6 +47,7 @@ class Bullet{
 	void move(){
 		x += direction.x;
 		y += direction.y;
+		
 	}
 
 	void decay(){

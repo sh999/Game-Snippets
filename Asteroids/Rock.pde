@@ -12,6 +12,7 @@ class Rock{
     diameter = 40;
     direction = new PVector();
     direction = PVector.fromAngle(random(0, 360));
+    direction.setMag(0.5);
 
   }
 

@@ -7,6 +7,7 @@ ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Rock> rocks = new ArrayList<Rock>();
 float bulletAngle;
 void setup(){
+  ellipseMode(CENTER);
   size(800,800,P2D);
   background(0);
   noStroke();
@@ -23,12 +24,14 @@ void draw(){
   for(Rock r: rocks){
     r.update();
   }
+
   for(int i = bullets.size()-1; i >= 0; i--){
     Bullet b = bullets.get(i);
     b.update();
     for(Rock r: rocks){
       checkCircleCollision(b, r);
     }
+    
     if(b.dead() == true){
       bullets.remove(i);
     }
@@ -43,17 +46,24 @@ void checkCircleCollision(Bullet b, Rock r){
   PVector bPosition = b.getPosition();
   PVector rPosition = r.getPosition();
   float rbDistance = dist(bPosition.x, bPosition.y, rPosition.x, rPosition.y);
-  if(rbDistance < rDiameter){
-    destroyBullet(b);
-    destroyRock(r);
+  // println("rbDistance = " + rbDistance);
+  // println("rDiameter = " + rDiameter);
+  if(rbDistance < rDiameter/2){
+    
+    // b.destroy();
+    
+    print("hit");
+
+    // destroyRock(r);
   }
 }
 
-void destroyBullet(){
+void destroyBullet(Bullet b){
 
 }
 
-void destroyRock(){
+void destroyRock(Rock r){
+
   
 }
 
