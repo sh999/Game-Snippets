@@ -218,10 +218,10 @@ def battleWithDice():
 	'''
 	Simulate damage with simple die mechanism
 	'''
-	myWarrior = Warrior(10, 2, 10)
-	compWarrior = Warrior(9, 2, 9)
-	myWarrior.setName("Bob");
-	compWarrior.setName("Alice");
+	myWarrior = Warrior(6, 5, 9)
+	compWarrior = Warrior(8, 4, 8)
+	myWarrior.setName("My warrior");
+	compWarrior.setName("Computer warrior");
 	divider = "-" * 10
 	battleStats = BattleStats(myWarrior, compWarrior)
 	while myWarrior.getHealth() > 0 and compWarrior.getHealth() > 0:
@@ -230,10 +230,11 @@ def battleWithDice():
 		printCondition(compWarrior)
 		attacker = determineAttacker(myWarrior, compWarrior)
 		defender = determineDefender(attacker, myWarrior, compWarrior)
-		damage = damageCalculator(attacker.getAttack(), defender.getAttack())
+		damage = damageCalculator(attacker.getAttack(), defender.getDefense())
 		defender.reduceHealth(damage)
 		battleStats.addRounds()
 		battleStats.recordDamage(myWarrior.getHealth(), compWarrior.getHealth())
+		a = raw_input()
 	if myWarrior.getHealth() <= 0:
 		print myWarrior.getName(), "is dead!"
 		battleStats.setWinner(compWarrior)
@@ -245,8 +246,8 @@ def battleWithDice():
 	print "Winner = ", battleStats.getWinner()
 	print "Total rounds = ", battleStats.getRounds()
 	print "HP history = "
-	print myWarrior.getName(), " = ", battleStats.getHistory(myWarrior)
-	print compWarrior.getName(), " = ", battleStats.getHistory(compWarrior)
+	print myWarrior.getName(), "  = ", battleStats.getHistory(myWarrior)
+	print compWarrior.getName(), "= ", battleStats.getHistory(compWarrior)
 
 def testAgility():
 	'''
@@ -256,8 +257,8 @@ def testAgility():
 	compWarrior = Warrior(5, 4, 11)
 	determineAttacker(myWarrior, compWarrior)
 
-# testAgility()
 battleWithDice()
+# testAgility()
 # dieTest()
 # main()
 # miniSimulation()
