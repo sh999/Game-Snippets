@@ -1,3 +1,6 @@
+/*
+Shooter is the spaceship that the player controls
+*/
 class Shooter{
   float x, y;
   float dx, dy;
@@ -9,6 +12,7 @@ class Shooter{
   float thrustPower;
   float thrustX, thrustY;
   float currentSpeed;
+  ArrayList<Bullet> bs = new ArrayList<Bullet>();
   
   Shooter(float x, float y){
     this.x = x;
@@ -25,6 +29,8 @@ class Shooter{
   }
   
   void update(){
+    // takes care of angle changes
+    // doesn't directly draw but calls drawShip()
     move();
     angle = angle + dAngle;
     pushMatrix();
@@ -35,6 +41,19 @@ class Shooter{
     changeThrust();
     screenWrap();
     // println("speed = "+ speed + "\tdx = " + dx + "\tdy = " + dy + "\tdirection = " + moveDirection + "\tangle = " + angle + "\tthrust power = " + thrustPower);
+  
+    
+    // Work in progress loop on having bullets being updated within this shooter
+    //  class and not the main draw()
+    for(int i = bs.size()-1; i >= 0; i--){
+      // loops through each bullet and check for collision with each rock
+      Bullet b = bs.get(i);
+      b.update();
+      if(b.dead() == true){
+        bs.remove(i);
+      }
+    }
+    
   } 
 
   void drawShip(){
@@ -43,13 +62,15 @@ class Shooter{
   }
   
   void move(){
+    // calculates movement based on thrust
     if(thrustOn == true) moveDirection = angle; // Move direction only is same as angle (where ship faces) if thrust is on. This allows ship to rotate freely if thrust is not on (spin in place)
     x = x + dx;
     y = y + dy;
   }
 
   void changeThrust(){
-    /* Mechanic: When user pressed up, it turns thrust on
+    /* 
+    Mechanic: When user pressed up, it turns thrust on
     The longer 'up' is pressed, the larger the thrust vector
     Thrust adds to increase speed
     */
@@ -68,15 +89,15 @@ class Shooter{
   } 
 
   void rotateLeft(){
-    p1.dAngle = -p1.rotSpeed;
+    dAngle = -rotSpeed;
   }
 
   void rotateRight(){
-    p1.dAngle = p1.rotSpeed ;
+    dAngle = rotSpeed ;
   }
 
   void stopRotation(){
-    p1.dAngle = 0;
+    dAngle = 0;
   }
 
   void setThrustOn(){
@@ -116,7 +137,13 @@ class Shooter{
   }
 
   void shoot(){
-
+    float angle = player.angle()-PI/2;
+    bs.add(new Bullet(x, y, angle));
+    
+  }
+  
+  ArrayList<Bullet> getBullets(){
+    return bs;
   }
 
    

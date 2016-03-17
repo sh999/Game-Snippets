@@ -17,7 +17,8 @@ class Rock{
   }
 
   void setShape(){
-    /*rock.beginShape();
+    /*
+    rock.beginShape();
     rock.vertex(0,0);
     rock.vertex(20,0);
     rock.vertex(40,-10);
@@ -27,7 +28,8 @@ class Rock{
     rock.vertex(24,50);
     rock.vertex(-10,44);
     rock.vertex(-5,12);
-    rock.endShape();*/
+    rock.endShape();
+    */
   }
   
   void update(){

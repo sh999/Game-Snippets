@@ -1,0 +1,2 @@
+3/16/16 - Put collision detection in new class
+		  Put all bullet-related things in bullet class (decide how to relate bullet and shooter)
