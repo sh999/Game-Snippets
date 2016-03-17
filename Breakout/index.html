@@ -23,36 +23,94 @@
 
 	<script>
 		var canvas = document.getElementById("myCanvas");
-		var ctx = canvas.getContext("2d");
+		var ctx = canvas.getContext("2d");	// drawing will be done on ctx
 		var radius = 10;
-	
-		var x = canvas.width/2;
-		var y = canvas.height-30;
-		var dx = 2;
-		var dy = -2;
+		var ballX = canvas.width/2;
+		var ballY = canvas.height/2;
+		var balldx = 2;	// ball speed
+		var balldy = -2;
+		var paddleWidth = 75; 
+		var paddleHeight = 10;
+		var paddleX = (canvas.width-paddleWidth)/2;
+		var paddleY = canvas.height-30;
+		var paddledx = 7;
+		var leftPressed = false;	// is left/right key pressed?
+		var rightPressed = false;
+
 		function drawBall(){
 			ctx.beginPath();
-			ctx.arc(x,y,radius,0,Math.PI*2);
+			ctx.arc(ballX,ballY,radius,0,Math.PI*2);
 			ctx.fillStyle = "red";
 			ctx.fill();
 			ctx.closePath();
 		}
+
+		function drawPaddle(){
+			ctx.beginPath();
+			ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
+			ctx.fillStyle = "#0095DD";
+			ctx.fill();
+			ctx.closePath();
+		}
+
+		function keyDownHandler(e){
+			// e is the key currently pressed
+			// each keyboard key as a numeric keycode value
+			// left key = 37, right key = 39
+			if(e.keyCode == 37){
+				leftPressed = true;
+			}
+			else if(e.keyCode == 39){
+				rightPressed = true;
+			}
+		}
+
+		function keyUpHandler(e){
+			if(e.keyCode == 37){
+				leftPressed = false;
+			}
+			else if(e.keyCode == 39){
+				rightPressed = false;
+			}
+		}
+
 		function draw(){
 			ctx.clearRect(0,0,canvas.width,canvas.height);
 			drawBall();
+			drawPaddle();
 			// bounce off walls
 			// top and bottome wall
-			if (y + dy < radius || y + dy > canvas.height - radius){
-				dy = -dy;
+			if (ballY + balldy < radius){
+				balldy = -balldy;
+			}
+			else if(ballY + balldy > canvas.height - radius){
+				alert("GAME OVER");
+				document.location.reload();
 			}
 			// right and left wall
-			if (x + dx < radius || x + dx > canvas.width - radius){
-				dx = -dx;
+			if (ballX + balldx < radius || ballX + balldx > canvas.width - radius){
+				balldx = -balldx;
 			}
-			x += dx;
-			y += dy;
+
+			// ball and paddle collision
+			if (ballX + balldx < paddleX + paddleWidth && ballX + balldx > paddleX){
+				if (ballY + radius + balldy> paddleY){
+					balldy = -balldy;
+				}
+			}
+
+			if (leftPressed){
+				paddleX -= paddledx;
+			}
+			else if(rightPressed){
+				paddleX += paddledx;
+			}
+			ballX += balldx;
+			ballY += balldy;
 		} 
-		setInterval(draw, 10);
+		document.addEventListener("keydown", keyDownHandler, false);
+		document.addEventListener("keyup", keyUpHandler, false);
+		setInterval(draw, 10);	// calls draw() every 10 ms
 	</script>
 </body>
 </html>
