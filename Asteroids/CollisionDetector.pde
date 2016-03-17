@@ -7,7 +7,6 @@ class CollisionDetector{
     for(int i = allbullets.size()-1; i >= 0; i--){
     // loops through each bullet and check for collision with each rock
       Bullet b = allbullets.get(i);
-      b.update();
       for(Rock r: allrocks){
         // Detect bullet-rock collision
         float bDiameter, rDiameter;

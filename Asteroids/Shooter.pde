@@ -41,12 +41,8 @@ class Shooter{
     changeThrust();
     screenWrap();
     // println("speed = "+ speed + "\tdx = " + dx + "\tdy = " + dy + "\tdirection = " + moveDirection + "\tangle = " + angle + "\tthrust power = " + thrustPower);
-  
-    
-    // Work in progress loop on having bullets being updated within this shooter
-    //  class and not the main draw()
+
     for(int i = bs.size()-1; i >= 0; i--){
-      // loops through each bullet and check for collision with each rock
       Bullet b = bs.get(i);
       b.update();
       if(b.dead() == true){
