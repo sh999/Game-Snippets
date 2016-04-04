@@ -4,127 +4,13 @@ Simulator mechanics can be as simple as dice-based or
 '''
 
 import random
-
-class Master():
-	'''
-	Master game class.  Currently its only job is to display message
-	May be expanded to includ e menu-related or big game logic behavior, not specific gameplay
-	'''
-	def __init__(self):
-		pass
-	
-	def introMessage(self):
-		print "\n\n"
-		print "=================================="
-		print "|| Welcome to Battle Simulator! ||"
-		print "=================================="
-		print "\n"
-		print "You have 100 points to spend" # Implement later
-	
-	def displayStats(self, playerWarrior, computerWarrior):
-		print "\nYour warrior stats: "
-		print "Attack: ", playerWarrior.getAttack()
-		print "Defense: ", playerWarrior.getDefense()
-		print "Agility: ", playerWarrior.getAgility()
-		print "\n"
-		print "Opponent warrior stats: "
-		print "Attack: ", computerWarrior.getAttack()
-		print "Defense: ", computerWarrior.getDefense()
-		print "Agility: ", computerWarrior.getAgility()
-		print "\n"
-
-class Warrior():
-	def __init__(self, attack, defense, agility):
-		self.attack = attack
-		self.defense = defense
-		self.agility = agility
-		self.health = 30
-
-	def getAttack(self):
-		return self.attack
-
-	def getDefense(self):
-		return self.defense
-
-	def getAgility(self):
-		return self.agility
-
-	def setName(self, name):
-		self.name = name
-
-	def getName(self):
-		return self.name
-
-	def getHealth(self):
-		return self.health
-
-	def reduceHealth(self,points):
-		self.health -= points
-	
-class SetupPlayers():	
-	''' Getting too big.  Split with WarriorSet class.  
-		Purpose:  Set warrior attribute values by asking user and store the Warrior objects; can be retrieved by other classes, like WarriorSet
-	'''
-	def __init__(self):
-		pass
-	
-	def askPlayer(self):	
-		self.askForAttributes()
-		# self.setDefaultAttributes()
-		self.playerWarrior = Warrior(self.attack, self.defense, self.agility)
-		self.computerWarrior = Warrior(5, 3, 7)
-	
-	def askForAttributes(self):
-		self.attack = raw_input("Enter attack value: ")
-		self.defense = raw_input("Enter defense value: ")
-		self.agility = raw_input("Enter agility value: ")
-	
-	def setDefaultAttributes(self):
-		self.attack = 7
-		self.defense = 8
-		self.agility = 9
-
-	def getPlayerWarrior(self):
-		return self.playerWarrior
-
-	def getComputerWarrior(self):
-		return self.computerWarrior
-
-class WarriorSet:
-	'''
-	Holds player and computer warriors
-	'''
-	def __init__(self, warrior1, warrior2):
-		self.warrior1 = warrior1
-		self.warrior2 = warrior2
-
-	def printWarriors(self):
-		print self.warrior1
-		print self.warrior2
-
-class Simulation():
-	def __init__(self):
-		pass
-
-	def setWarriors(self, warrior1, warrior2):
-		self.warrior1 = warrior1
-		self.warrior2 = warrior2
-
-	def run(self):
-		print "***** !Battle Time! *****"
-		print self.warrior1
-		print self.warrior2
-
-class Die:
-	def __init__(self, maxNumber):
-		self.maxNumber = maxNumber
-		self.roll()
-
-	def roll(self):
-		self.rollNumber = random.randint(1, self.maxNumber)
-
-	def getValue(self):
-		return self.rollNumber
+import Master
+from Warrior import *
+import SetupPlayers
+import WarriorSet
+import Simulation
+from  Die import *
+from BattleStats import *
 
 def damageCalculator(dieMax1, dieMax2):
 	'''
@@ -189,30 +75,6 @@ def dieTest():
 
 def printCondition(warrior):
 	print warrior.getName(), "HP =", warrior.getHealth()
-
-class BattleStats:
-	def __init__(self, warrior1, warrior2):
-		self.warrior1 = warrior1
-		self.warrior2 = warrior2
-		self.totalRounds = 0
-		self.warrior1health = [warrior1.getHealth()]
-		self.warrior2health = [warrior2.getHealth()]
-	def addRounds(self):
-		self.totalRounds += 1
-	def getRounds(self):
-		return self.totalRounds
-	def setWinner(self, warrior):
-		self.winner = warrior
-	def getWinner(self):
-		return self.winner.getName()
-	def recordDamage(self, w1Health, w2Health):
-		self.warrior1health.append(w1Health)
-		self.warrior2health.append(w2Health)
-	def getHistory(self, warrior):
-		if warrior == self.warrior1:
-			return self.warrior1health
-		else:
-			return self.warrior2health
 
 def battleWithDice():
 	'''
