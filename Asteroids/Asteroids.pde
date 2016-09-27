@@ -1,8 +1,8 @@
 /*
 Asteroids clone
 */
-Shooter player;
-int rockNum;
+Shooter player;  // human controlled spaceship that can shoot
+int rockNum;     // # of asteroids
 ArrayList<Rock> rocks = new ArrayList<Rock>();
 CollisionDetector collision_detector = new CollisionDetector();
 
@@ -62,4 +62,3 @@ void keyReleased(){
   }
 }
     
-

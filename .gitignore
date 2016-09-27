@@ -28,3 +28,6 @@ sysinfo.txt
 # Processing
 */build-tmp/*
 *.properties
+
+# Python
+*pyc
