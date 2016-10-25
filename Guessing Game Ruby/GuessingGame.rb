@@ -14,7 +14,6 @@ while correct == false
 		puts "Correct!"
 		correct = true
 	end
-	
 	if correct == false
 		puts "Guess again "
 		guess = gets.chomp

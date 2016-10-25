@@ -13,7 +13,7 @@ def main():
 	surface.fill(field_color)
 	p1 = Player(200,600)
 	while True:
-		p1.move()
+		p1.move()		# Update player
 		p1.draw(surface)
 		for event in pygame.event.get():
 			if event.type == QUIT:
