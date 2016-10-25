@@ -1,4 +1,8 @@
 class BattleStats:
+	'''
+		Keeps track of battle stats 
+		 such as winner, health
+	'''
 	def __init__(self, warrior1, warrior2):
 		self.warrior1 = warrior1
 		self.warrior2 = warrior2

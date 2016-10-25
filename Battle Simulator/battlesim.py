@@ -23,7 +23,6 @@ def damageCalculator(dieMax1, dieMax2):
 	damage = die1.getValue() - die2.getValue()
 	if damage < 0: # Disallows negative damage
 		damage = 0
-	print "damage = ", damage
 	return damage
 
 def determineAttacker(warrior1, warrior2):
@@ -73,43 +72,9 @@ def miniSimulation():
 def dieTest():
 	damageCalculator(6, 6)
 
-def printCondition(warrior):
-	print warrior.getName(), "HP =", warrior.getHealth()
-
-def battleWithDice():
-	'''
-	Simulate damage with simple die mechanism
-	'''
-	myWarrior = Warrior(6, 5, 9)
-	compWarrior = Warrior(8, 4, 8)
-	myWarrior.setName("My warrior");
-	compWarrior.setName("Computer warrior");
-	divider = "-" * 10
-	battleStats = BattleStats(myWarrior, compWarrior)
-	while myWarrior.getHealth() > 0 and compWarrior.getHealth() > 0:
-		print divider
-		printCondition(myWarrior)
-		printCondition(compWarrior)
-		attacker = determineAttacker(myWarrior, compWarrior)
-		defender = determineDefender(attacker, myWarrior, compWarrior)
-		damage = damageCalculator(attacker.getAttack(), defender.getDefense())
-		defender.reduceHealth(damage)
-		battleStats.addRounds()
-		battleStats.recordDamage(myWarrior.getHealth(), compWarrior.getHealth())
-		a = raw_input()
-	if myWarrior.getHealth() <= 0:
-		print myWarrior.getName(), "is dead!"
-		battleStats.setWinner(compWarrior)
-	else:
-		print compWarrior.getName(), "is dead!"
-		battleStats.setWinner(myWarrior)
-	print divider
-	print "Battle stats:"
-	print "Winner = ", battleStats.getWinner()
-	print "Total rounds = ", battleStats.getRounds()
-	print "HP history = "
-	print myWarrior.getName(), "  = ", battleStats.getHistory(myWarrior)
-	print compWarrior.getName(), "= ", battleStats.getHistory(compWarrior)
+def printCondition(warrior1, warrior2):
+	print warrior1.getName(), "HP =", warrior1.getHealth(), "\t",
+	print warrior2.getName(), "HP =", warrior2.getHealth()
 
 def testAgility():
 	'''
@@ -118,6 +83,64 @@ def testAgility():
 	myWarrior = Warrior(5, 4, 11)
 	compWarrior = Warrior(5, 4, 11)
 	determineAttacker(myWarrior, compWarrior)
+
+def printDamageMsg(damage):
+	'''
+		Print interesting commentary based on degree of damage
+	'''
+	if damage == 0:
+		r = random.random()
+		if r > 0.5:
+			print "Attack was blocked!"
+		else:
+			print "Whiff! Missed!"
+	elif damage < 5:
+		print "Minor scratch inflicted!"
+	elif damage < 10:
+		print "OUCH! That really hurt!"
+	else:
+		print "Critical hit!"
+
+def battleWithDice():
+	'''
+	Simulate damage with simple die mechanism
+	'''
+	myWarrior = Warrior(6, 5, 9) 						# Hard code my and cpu warrior
+	compWarrior = Warrior(8, 4, 8)
+	myWarrior.setName("My warrior");
+	compWarrior.setName("Computer warrior");
+	divider = "-" * 10
+	battleStats = BattleStats(myWarrior, compWarrior) 	# Keep track of stats to be shown in end
+	while myWarrior.getHealth() > 0 and compWarrior.getHealth() > 0:  # Loop battle rounds
+		print divider
+		printCondition(myWarrior, compWarrior)
+		attacker = determineAttacker(myWarrior, compWarrior)
+		defender = determineDefender(attacker, myWarrior, compWarrior)
+		damage = damageCalculator(attacker.getAttack(), defender.getDefense())
+		printDamageMsg(damage)
+		# print "damage = ", damage
+		defender.reduceHealth(damage)
+		battleStats.addRounds()
+		battleStats.recordDamage(myWarrior.getHealth(), compWarrior.getHealth())
+		print "Options:  (Enter)Continue\t(b)Main Menu"
+		a = raw_input()
+		if a == "b":
+			print "You attempted to go to Main Menu; not yet implemented"
+		else:
+			continue
+	if myWarrior.getHealth() <= 0: 						# End battle scenario
+		print myWarrior.getName(), "is dead!"
+		battleStats.setWinner(compWarrior)
+	else:
+		print compWarrior.getName(), "is dead!"
+		battleStats.setWinner(myWarrior)
+	print divider
+	print "Battle stats:"  								# Show battle stats
+	print "Winner = ", battleStats.getWinner()
+	print "Total rounds = ", battleStats.getRounds()
+	print "HP history = "
+	print myWarrior.getName(), "  = ", battleStats.getHistory(myWarrior)
+	print compWarrior.getName(), "= ", battleStats.getHistory(compWarrior)
 
 battleWithDice()
 # testAgility()

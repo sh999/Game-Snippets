@@ -7,23 +7,22 @@ main function:
 
 
 Classes:
-Class Master:
+Master:
 	Role:  Create classes for entire game
 	Variables:
 		Classes for the game
 			Output
 			SetupPlayers
 			Warrior
-			
-Class Output:
+Output:
 	Role:  Display static messages from beginning of game to end
 	Variables:
 	Methods:
-Class SetupPlayers
+SetupPlayers
 	Role:  Setup attributes for warriors
 	Variables:
 	Methods:
-Class Warrior
+Warrior
 	Role:  Character in the game.  Has attributes for battling
 	Variables:
 	Methods:
