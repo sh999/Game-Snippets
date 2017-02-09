@@ -20,7 +20,6 @@
 </head>
 <body>
 	<canvas id="myCanvas" width=480 height=320></canvas>
-
 	<script>
 		var canvas = document.getElementById("myCanvas");
 		var ctx = canvas.getContext("2d");	// drawing will be done on ctx
@@ -46,7 +45,6 @@
 		var bricks = [];
 		var score = 0;
 		var lives = 3;
-
 		for (c = 0; c < brickColumnNum; c++){	// initialize brick array
 			bricks[c] = [];
 			for (r = 0; r < brickRowNum; r++){
@@ -54,7 +52,61 @@
 														// status = 0 when ball hits a brick
 			}
 		}
+		document.addEventListener("keydown", keyDownHandler, false);
+		document.addEventListener("keyup", keyUpHandler, false);
+		document.addEventListener("mousemove", mouseMoveHandler, false);
+		setInterval(draw, 10);	// Call draw() every 10 ms
+		
+		function draw(){
+			// Main function; called every 10 ms according to setInterval
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+			drawBall();
+			drawPaddle();
+			collisionDetection();
+			drawBricks();
+			drawScore();
+			drawLives();
+			// bounce off walls
+			// top and bottome wall
+			if (ballY + balldy < radius){
+				balldy = -balldy;
+			}
+			else if(ballY + balldy > canvas.height - radius){
+				lives -= 1;
+				if(!lives){
+					alert("GAME OVER");
+					document.location.reload();
+				}
+				else{
+					ballX = canvas.width/2;
+					ballY = canvas.height/2;
+					balldx = 2;
+					balldy = 2;
+					paddleX = (canvas.width-paddleWidth)/2;
+				}
+			}
+				
+			// right and left wall
+			if (ballX + balldx < radius || ballX + balldx > canvas.width - radius){
+				balldx = -balldx;
+			}
 
+			// ball and paddle collision
+			if (ballX + balldx < paddleX + paddleWidth && ballX + balldx > paddleX){
+				if (ballY + radius + balldy> paddleY){
+					balldy = -balldy;
+				}
+			}
+			if (leftPressed){
+				paddleX -= paddledx;
+			}
+			else if(rightPressed){
+				paddleX += paddledx;
+			}
+			ballX += balldx;
+			ballY += balldy;
+		} 
+		// Function definitions
 		function drawLives(){
 			ctx.font = "15px Arial";
 			ctx.fillStyle = "#8080A1";
@@ -149,59 +201,6 @@
 				paddleX = relativeX - paddleWidth/2;
 			}
 		}
-
-		function draw(){
-			ctx.clearRect(0,0,canvas.width,canvas.height);
-			drawBall();
-			drawPaddle();
-			collisionDetection();
-			drawBricks();
-			drawScore();
-			drawLives();
-			// bounce off walls
-			// top and bottome wall
-			if (ballY + balldy < radius){
-				balldy = -balldy;
-			}
-			else if(ballY + balldy > canvas.height - radius){
-				lives -= 1;
-				if(!lives){
-					alert("GAME OVER");
-					document.location.reload();
-				}
-				else{
-					ballX = canvas.width/2;
-					ballY = canvas.height/2;
-					balldx = 2;
-					balldy = 2;
-					paddleX = (canvas.width-paddleWidth)/2;
-				}
-			}
-				
-			// right and left wall
-			if (ballX + balldx < radius || ballX + balldx > canvas.width - radius){
-				balldx = -balldx;
-			}
-
-			// ball and paddle collision
-			if (ballX + balldx < paddleX + paddleWidth && ballX + balldx > paddleX){
-				if (ballY + radius + balldy> paddleY){
-					balldy = -balldy;
-				}
-			}
-			if (leftPressed){
-				paddleX -= paddledx;
-			}
-			else if(rightPressed){
-				paddleX += paddledx;
-			}
-			ballX += balldx;
-			ballY += balldy;
-		} 
-		document.addEventListener("keydown", keyDownHandler, false);
-		document.addEventListener("keyup", keyUpHandler, false);
-		document.addEventListener("mousemove", mouseMoveHandler, false);
-		setInterval(draw, 10);	// calls draw() every 10 ms
 	</script>
 </body>
 </html>
