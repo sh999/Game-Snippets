@@ -4,7 +4,7 @@ class Game{
 	Game(){
 		state = "Playing";
 	}
-
+	
 	String state(){
 		return state;
 	}

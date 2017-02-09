@@ -3,6 +3,7 @@ class CollisionChecker {
   CollisionChecker(Game g){
     this.g = g;
 	}
+
 	void calcCollision(Ball b, Paddle p){
 	  // Check if ball hits paddle
 	  if(ball.y > height){
@@ -35,7 +36,7 @@ class CollisionChecker {
     	reverseXDirection();
     }
   }
-
+  
   void dampen(){
     float dampening = 0.50;
   	ball.dy = ball.dy * dampening; // Each bounce reduces ball velocity

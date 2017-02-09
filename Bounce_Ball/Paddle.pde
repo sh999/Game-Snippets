@@ -8,12 +8,14 @@ class Paddle{
     h = 20;
     forceY = 0;
   }
+  
   void draw(){
     y = mouseY;
     x = mouseX;
     fill(220, 140 , 240);
     rect(x, y, w, h);
   }
+  
   void calcForce(){
     forceY = pmouseY - mouseY;
     forceY = forceY * 0.1;

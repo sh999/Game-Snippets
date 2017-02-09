@@ -15,7 +15,6 @@ class Ball{
     gravity = 0.5;
     damping = 30;
     ballTrail = new BallTrail(this.x, this.y);
-
   }
 
   private void calcMove(){
@@ -41,5 +40,4 @@ class Ball{
   void drawTrail(){
     ballTrail.update(ball.x, ball.y);
   }
-
 }

@@ -37,6 +37,5 @@ class BallTrail{
 		for(int i = 0; i < x.length; i++){
 			ellipse(x[i] , y[i], ball.diameter, ball.diameter);
 		}
-
 	}
 }
