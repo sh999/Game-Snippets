@@ -25,6 +25,4 @@ class CollisionDetector{
       }
     }
   }// end checkCollision
-  
-  
 } //end class

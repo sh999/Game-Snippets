@@ -29,8 +29,8 @@ class Shooter{
   }
   
   void update(){
-    // takes care of angle changes
-    // doesn't directly draw but calls drawShip()
+    // Takes care of angle changes
+    // Doesn't directly draw but calls drawShip()
     move();
     angle = angle + dAngle;
     pushMatrix();
@@ -141,6 +141,4 @@ class Shooter{
   ArrayList<Bullet> getBullets(){
     return bs;
   }
-
-   
 }

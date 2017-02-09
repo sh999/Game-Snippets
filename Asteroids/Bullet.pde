@@ -74,6 +74,5 @@ class Bullet{
       PVector position = new PVector(x, y);
       return position;
   }
-
 }
 

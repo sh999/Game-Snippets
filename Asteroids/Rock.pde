@@ -13,7 +13,6 @@ class Rock{
     direction = new PVector();
     direction = PVector.fromAngle(random(0, 360));
     direction.setMag(0.5);
-
   }
 
   void setShape(){
@@ -72,5 +71,4 @@ class Rock{
     PVector position = new PVector(x, y);
     return position;
   }
-  
 }

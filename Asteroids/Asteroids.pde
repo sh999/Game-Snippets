@@ -1,7 +1,7 @@
 /*
 Asteroids clone
 */
-Shooter player;  // human controlled spaceship that can shoot
+Shooter player;  // Human controlled spaceship that can shoot
 int rockNum;     // # of asteroids
 ArrayList<Rock> rocks = new ArrayList<Rock>();
 CollisionDetector collision_detector = new CollisionDetector();
@@ -39,7 +39,7 @@ void destroyRock(Rock r){
 void keyPressed(){
   if(key == CODED){
     if(keyCode == UP){
-      player.setThrustOn(); //updates speed
+      player.setThrustOn(); //Updates speed
     }
     if(keyCode == LEFT){
       player.rotateLeft();
