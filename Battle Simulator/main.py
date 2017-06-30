@@ -4,13 +4,14 @@ Simulator mechanics can be as simple as dice-based or
 '''
 
 import random
-import Master
+from Master import *
 from Warrior import *
-import SetupPlayers
+from SetupPlayers import *
 import WarriorSet
 import Simulation
 from  Die import *
 from BattleStats import *
+from TacticalRound import *
 
 def damageCalculator(dieMax1, dieMax2):
 	'''
@@ -107,8 +108,8 @@ def battleWithDice():
 	'''
 	myWarrior = Warrior(6, 5, 9) 						# Hard code my and cpu warrior
 	compWarrior = Warrior(8, 4, 8)
-	myWarrior.setName("My warrior");
-	compWarrior.setName("Computer warrior");
+	myWarrior.setName("My warrior")
+	compWarrior.setName("Computer warrior")
 	divider = "-" * 10
 	battleStats = BattleStats(myWarrior, compWarrior) 	# Keep track of stats to be shown in end
 	while myWarrior.getHealth() > 0 and compWarrior.getHealth() > 0:  # Loop battle rounds
@@ -142,7 +143,17 @@ def battleWithDice():
 	print (myWarrior.getName(), "  = ", battleStats.getHistory(myWarrior))
 	print (compWarrior.getName(), "= ", battleStats.getHistory(compWarrior))
 
-battleWithDice()
+def AowTacticalBattle():
+	'''
+	Tactical battle inspired by Age Of Wonders
+	'''
+	warrior = Warrior(5,5,5)
+	defender = Warrior(4,4,4)
+	round = TacticalRound(warrior,defender)
+	round.attack()
+
+AowTacticalBattle()
+#battleWithDice()
 # testAgility()
 # dieTest()
 # main()
