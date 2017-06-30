@@ -7,21 +7,21 @@ class Master():
 		pass
 	
 	def introMessage(self):
-		print "\n\n"
-		print "=================================="
-		print "|| Welcome to Battle Simulator! ||"
-		print "=================================="
-		print "\n"
-		print "You have 100 points to spend" # Implement later
+		print ("\n\n")
+		print ("==================================")
+		print ("|| Welcome to Battle Simulator! ||")
+		print ("==================================")
+		print ("\n")
+		print ("You have 100 points to spend") # Implement later
 	
 	def displayStats(self, playerWarrior, computerWarrior):
-		print "\nYour warrior stats: "
-		print "Attack: ", playerWarrior.getAttack()
-		print "Defense: ", playerWarrior.getDefense()
-		print "Agility: ", playerWarrior.getAgility()
-		print "\n"
-		print "Opponent warrior stats: "
-		print "Attack: ", computerWarrior.getAttack()
-		print "Defense: ", computerWarrior.getDefense()
-		print "Agility: ", computerWarrior.getAgility()
-		print "\n"
+		print ("\nYour warrior stats: ")
+		print ("Attack: ", playerWarrior.getAttack())
+		print ("Defense: ", playerWarrior.getDefense())
+		print ("Agility: ", playerWarrior.getAgility())
+		print ("\n")
+		print ("Opponent warrior stats: ")
+		print ("Attack: ", computerWarrior.getAttack())
+		print ("Defense: ", computerWarrior.getDefense())
+		print ("Agility: ", computerWarrior.getAgility())
+		print ("\n")

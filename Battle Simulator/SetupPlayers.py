@@ -13,9 +13,9 @@ class SetupPlayers():
 		self.computerWarrior = Warrior(5, 3, 7)
 	
 	def askForAttributes(self):
-		self.attack = raw_input("Enter attack value: ")
-		self.defense = raw_input("Enter defense value: ")
-		self.agility = raw_input("Enter agility value: ")
+		self.attack = input("Enter attack value: ")
+		self.defense = input("Enter defense value: ")
+		self.agility = input("Enter agility value: ")
 	
 	def setDefaultAttributes(self):
 		self.attack = 7

@@ -8,5 +8,5 @@ class WarriorSet:
 		self.warrior2 = warrior2
 
 	def printWarriors(self):
-		print self.warrior1
-		print self.warrior2
+		print (self.warrior1)
+		print (self.warrior2)

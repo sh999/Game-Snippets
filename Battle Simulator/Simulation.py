@@ -8,6 +8,6 @@ class Simulation():
 		self.warrior2 = warrior2
 
 	def run(self):
-		print "***** !Battle Time! *****"
-		print self.warrior1
-		print self.warrior2
+		print ("***** !Battle Time! *****")
+		print (self.warrior1)
+		print (self.warrior2)

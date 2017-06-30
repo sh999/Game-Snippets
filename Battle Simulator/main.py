@@ -38,10 +38,10 @@ def determineAttacker(warrior1, warrior2):
 		die2.roll()
 		diff = die1.getValue() - die2.getValue()
 	if diff > 0:
-		print warrior1.getName(), "attacks"
+		print (warrior1.getName(), "attacks")
 		attacker = warrior1
 	elif diff < 0:
-		print warrior2.getName(), "attacks"
+		print (warrior2.getName(), "attacks")
 		attacker = warrior2
 	return attacker
 
@@ -73,8 +73,8 @@ def dieTest():
 	damageCalculator(6, 6)
 
 def printCondition(warrior1, warrior2):
-	print warrior1.getName(), "HP =", warrior1.getHealth(), "\t",
-	print warrior2.getName(), "HP =", warrior2.getHealth()
+	print (warrior1.getName(), "HP =", warrior1.getHealth(), "\t",)
+	print (warrior2.getName(), "HP =", warrior2.getHealth())
 
 def testAgility():
 	'''
@@ -86,20 +86,20 @@ def testAgility():
 
 def printDamageMsg(damage):
 	'''
-		Print interesting commentary based on degree of damage
+		Print (interesting commentary based on degree of damage)
 	'''
 	if damage == 0:
 		r = random.random()
 		if r > 0.5:
-			print "Attack was blocked!"
+			print ("Attack was blocked!")
 		else:
-			print "Whiff! Missed!"
+			print ("Whiff! Missed!")
 	elif damage < 5:
-		print "Minor scratch inflicted!"
+		print ("Minor scratch inflicted!")
 	elif damage < 10:
-		print "OUCH! That really hurt!"
+		print ("OUCH! That really hurt!")
 	else:
-		print "Critical hit!"
+		print ("Critical hit!")
 
 def battleWithDice():
 	'''
@@ -112,35 +112,35 @@ def battleWithDice():
 	divider = "-" * 10
 	battleStats = BattleStats(myWarrior, compWarrior) 	# Keep track of stats to be shown in end
 	while myWarrior.getHealth() > 0 and compWarrior.getHealth() > 0:  # Loop battle rounds
-		print divider
+		print (divider)
 		printCondition(myWarrior, compWarrior)
 		attacker = determineAttacker(myWarrior, compWarrior)
 		defender = determineDefender(attacker, myWarrior, compWarrior)
 		damage = damageCalculator(attacker.getAttack(), defender.getDefense())
 		printDamageMsg(damage)
-		# print "damage = ", damage
+		# print ("damage = ", damage)
 		defender.reduceHealth(damage)
 		battleStats.addRounds()
 		battleStats.recordDamage(myWarrior.getHealth(), compWarrior.getHealth())
-		print "Options:  (Enter)Continue\t(b)Main Menu"
-		a = raw_input()
+		print ("Options:  (Enter)Continue\t(b)Main Menu")
+		a = input()
 		if a == "b":
-			print "You attempted to go to Main Menu; not yet implemented"
+			print ("You attempted to go to Main Menu; not yet implemented")
 		else:
 			continue
 	if myWarrior.getHealth() <= 0: 						# End battle scenario
-		print myWarrior.getName(), "is dead!"
+		print (myWarrior.getName(), "is dead!")
 		battleStats.setWinner(compWarrior)
 	else:
-		print compWarrior.getName(), "is dead!"
+		print (compWarrior.getName(), "is dead!")
 		battleStats.setWinner(myWarrior)
-	print divider
-	print "Battle stats:"  								# Show battle stats
-	print "Winner = ", battleStats.getWinner()
-	print "Total rounds = ", battleStats.getRounds()
-	print "HP history = "
-	print myWarrior.getName(), "  = ", battleStats.getHistory(myWarrior)
-	print compWarrior.getName(), "= ", battleStats.getHistory(compWarrior)
+	print (divider)
+	print ("Battle stats:")  								# Show battle stats
+	print ("Winner = "+ battleStats.getWinner())
+	print ("Total rounds = ", battleStats.getRounds())
+	print ("HP history = ")
+	print (myWarrior.getName(), "  = ", battleStats.getHistory(myWarrior))
+	print (compWarrior.getName(), "= ", battleStats.getHistory(compWarrior))
 
 battleWithDice()
 # testAgility()
