@@ -7,8 +7,13 @@ import random
 class Deck():
 	def __init__(self, name, mode):
 		self.name = name
+		suits = ['C','S']
+		
 		if mode == "ordered":
 			self.cards = [x for x in range(1,53)]
+
+
+
 		elif mode == "shuffled":
 			self.cards = [x for x in range(1,53)]
 			random.shuffle(self.cards)
