@@ -24,12 +24,12 @@ class WarGame():
 			top2 = self.deck2.get_top_card()
 			print self.player1.name,"shows card:", top1
 			print self.player2.name,"shows card:", top2
-			if top1 > top2:
+			if Deck.Deck.larger_than(top1, top2):
 				print self.player1.name,"has the higher card"
 				self.player1.add_won_cards([top1, top2])
 
-			elif top2 > top1:
-				print self.player1.name,"has the higher card"
+			elif Deck.Deck.larger_than(top2, top1):
+				print self.player2.name,"has the higher card"
 				self.player2.add_won_cards([top1, top2])
 			else:
 				print "Players tied cards"

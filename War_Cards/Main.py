@@ -4,12 +4,17 @@ Simple card came (War)
 '''
 import WarGame
 import random
+import Deck
+
+class testclass:
+	def __init__(self):
+		pass
+	@staticmethod
+	def hi():
+		print "hi"
 
 def test_syntax():
-	a = [1,2,3]
-	print a
-	a.extend([3])
-	print a
+	print Deck.Deck.larger_than((1,22),(3,4))
 
 def unit_testing():
 	pass
