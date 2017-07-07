@@ -4,12 +4,10 @@ class DragBox
   int y1;
   int x2;
   int y2;
-  
   DragBox()
   {
     
   }
-  
   void updateTopLeft(int a, int b)
   {
     x1 = a;
@@ -20,18 +18,15 @@ class DragBox
     x2 = a;
     y2 = b;
   }
-  
-  void update_coords(int a, int b, int c, int d)
+  void updateCoordinates()
   {
-    x1 = a;
-    y1 = b;
-    x2 = c;
-    y2 = d;
+    x1 = clickX;
+    y1 = clickY;
   }
-  
   void disp()
   {
+    fill(0);
+    stroke(255);
     rect(x1, y1, mouseX-x1, mouseY-y1);
   }
-  
 }
