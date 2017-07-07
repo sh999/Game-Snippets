@@ -25,12 +25,12 @@ void draw(){
     dragBox.updateCoordinates();
     dragBox.disp();
   }
-  if (unit1.checkInsideRect(clickX, clickY, mouseX, mouseY, mousePressed)) unit1.markAsInside();
-  if(mousePressed == false)
-  {
-    unit1.resetColor();
-  }
+  
+  if(unit1.checkInsideRect(clickX, clickY, mouseX, mouseY, mousePressed)) unit1.changeColor();
+  if(unit2.checkInsideRect(clickX, clickY, mouseX, mouseY, mousePressed)) unit2.changeColor();
+  
   unit1.disp();
+  unit2.disp();
 }
 void mousePressed()
 {
@@ -40,6 +40,5 @@ void mousePressed()
 void mouseReleased()
 {
   background(0);
-  //dragBox.updateBottomRight(mouseX, mouseY);
   dragBox.updateBottomRight(0,0);
 }
