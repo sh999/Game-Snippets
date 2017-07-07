@@ -8,41 +8,58 @@ Unit unit1;
 Unit unit2;
 int clickX, clickY;
 int releaseX, releaseY;
-boolean drawNothing = true;
+DragBox dragBox;
 
 void setup(){
   background(0);
   size(500, 500);
   unit1 = new Unit(30, 50);
   unit2 = new Unit(122, 24);
+  dragBox = new DragBox();
   unit1.dispProperties();
   unit2.dispProperties();
 }
 
 void draw(){
-  if(drawNothing == false)
+  if(mousePressed)
   {
     background(0);
     fill(0);
     stroke(255);
-    rect(clickX, clickY, mouseX-clickX, mouseY-clickY);
+    //rect(clickX, clickY, mouseX-clickX, mouseY-clickY);
+    dragBox.disp();
+    
   }
-  fill(255);
+  //fill(255);
+  //print("\nclickX: " + clickX + "  clickY: " + clickY + "  mouseX: " + mouseX + " mouseY: " + mouseY + "inside? " + " x: " + unit1.x + " y: " + unit1.y + " inside?" + unit1.check_inside_rect(clickX, clickY, mouseX, mouseY, dragging));
+  
+  unit1.checkInsideRect(clickX, clickY, mouseX, mouseY, mousePressed);
+  if(mousePressed == false)
+  {
+    unit1.resetColor();
+  }
   unit1.disp();
-  unit2.disp();
+  //unit2.disp();
+}
+
+boolean checkIfDragging()
+{
+  if(mousePressed)
+  {
+    return true;
+  }
+  return false;
 }
 
 void mousePressed()
 {
-  drawNothing = false;
   clickX = mouseX;
   clickY = mouseY;
-  print("\nClicX: " + clickX);
-  print("\nClicY: " + clickY);
+  dragBox.updateTopLeft(clickX, clickY);
 }
 
 void mouseReleased()
 {
-  drawNothing = true;
   background(0);
+  dragBox.updateBottomRight(mouseX, mouseY);
 }
