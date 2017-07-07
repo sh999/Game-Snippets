@@ -4,7 +4,6 @@ Draw circle units.
 Allow rectangular select on units; indicate selected units as different colors.
 Drag to move unit around.
 */
-
 Unit unit1;
 Unit unit2;
 int clickX, clickY;
@@ -23,18 +22,15 @@ void draw(){
   background(0);
   if(mousePressed)
   {
-    //print("\nclickX: " + clickX + "  clickY: " + clickY);
     dragBox.updateCoordinates();
     dragBox.disp();
   }
-  //print("\nclickX: " + clickX + "  clickY: " + clickY + "  mouseX: " + mouseX + " mouseY: " + mouseY + "inside? " + " x: " + unit1.x + " y: " + unit1.y + " inside?" + unit1.check_inside_rect(clickX, clickY, mouseX, mouseY, dragging));
   unit1.checkInsideRect(clickX, clickY, mouseX, mouseY, mousePressed);
   if(mousePressed == false)
   {
     unit1.resetColor();
   }
   unit1.disp();
-  //unit2.disp();
 }
 void mousePressed()
 {
