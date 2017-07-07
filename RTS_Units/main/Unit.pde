@@ -21,27 +21,37 @@ class Unit
   void disp()
   {
     //fill(col);
+    /*
     if(inside_rect == true)
     {
       col = color(100, 0, 0);
     }
+    */
     fill(col);
     ellipse(x, y, radius, radius);
     
   }
-  void checkInsideRect(int topleftX, int topleftY, int bottomrightX, int bottomrightY, boolean dragging)
+  boolean checkInsideRect(int topleftX, int topleftY, int bottomrightX, int bottomrightY, boolean dragging)
   {
     if(x < bottomrightX && x > topleftX && y < bottomrightY && y > topleftY && dragging == true)
     {
-      inside_rect = true;
+      //inside_rect = true;
+      return true;
     }
     else
     {
-      inside_rect = false;
+      //inside_rect = false;
+      return false;
     }
   } 
+  void markAsInside()
+  {
+    inside_rect = true;
+    col = color(100, 0, 0);
+  }
   void resetColor()
   {
+    print("reset");
     col = color(255);
   }
   
